@@ -1,0 +1,62 @@
+<div class="auth-page">
+  <form class="auth-form" [formGroup]="formGroup()">
+    <h1>{{ cardTitle() }}</h1>
+    <p>
+      {{ cardLoginOrRegisterText() }}
+      <a (click)="onNavigateToLoginOrRegister()">{{ linkToRegisterOrLogin() }}</a>
+    </p>
+
+    @if (isRegisterScreen()) {
+      <div class="input-group">
+        <span>Pseudo</span>
+        <input type="text" formControlName="fullName" />
+        <div class="text-error">
+          @if (
+            formGroup().get('fullName')?.touched &&
+            formGroup().get('fullName')?.errors?.['required']
+          ) {
+            <span>Pseudo required</span>
+          }
+
+          @if (formGroup().get('fullName')?.errors?.['minlength']) {
+            <span>Pseudo must be at least 4 characters long</span>
+          }
+        </div>
+      </div>
+    }
+
+    <div class="input-group">
+      <span>Email</span>
+      <input type="email" formControlName="emailId" required />
+      <div class="text-error">
+        @if (formGroup().get('emailId')?.touched && formGroup().get('emailId')?.errors?.['required']) {
+          <span>Email required</span>
+        }
+
+        @if (formGroup().get('emailId')?.errors?.['email']) {
+          <span>Invalid email</span>
+        }
+      </div>
+    </div>
+
+    <div class="input-group">
+      <span>Password</span>
+      <input type="password" formControlName="password" required />
+      <div class="text-error">
+        @if (
+          formGroup().get('password')?.touched && formGroup().get('password')?.errors?.['required']
+        ) {
+          <span>Password required</span>
+        }
+
+        @if (formGroup().get('password')?.errors?.['pattern']) {
+          <span
+            >The password must contain an uppercase and lowercase letter, a special character, and
+            be at least 8 characters long.</span
+          >
+        }
+      </div>
+    </div>
+  </form>
+  <button type="button" [disabled]="formGroup().invalid || isSubmitting()" (click)="onClick()" class="btn-validator">{{ btnText() }}</button>
+</div>

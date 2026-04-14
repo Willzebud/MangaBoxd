@@ -1,0 +1,12 @@
+<app-auth-card-form
+  [cardTitle]="'Sign in to MangaBoxd'"
+  [cardLoginOrRegisterText]="'New to MangaBoxd?'"
+  [linkToRegisterOrLogin]="'Create Account'"
+  [btnText]="'Sign In'"
+  [route]="'register'"
+  [currentType]="'Login'"
+  [formGroup]="loginForm"
+  [isSubmitting]="isSubmitting()"
+  (onSubmit)="onSubmitLogin()"
+>
+</app-auth-card-form>

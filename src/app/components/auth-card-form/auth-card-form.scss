@@ -1,0 +1,77 @@
+$text-error-color: #FFDD02;
+$text-color-white: #FFFFFF;
+
+.auth-page {
+  position: relative;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.auth-form {
+  background-color: #455466;
+  padding: 10px;
+  width: 30%;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  color: $text-color-white;
+}
+
+p {
+  text-align: center;
+  color: $text-color-white;
+}
+
+a {
+  background-color: #677688;
+  color: $text-color-white;
+  padding: 6px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.input-group {
+  margin-top: 10px;
+  color: $text-color-white;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding-bottom: 10px;
+}
+
+.input-group input {
+  margin: 4px 0px 4px 0px;
+  height: 30px;
+}
+
+.text-error {
+  color: $text-error-color;
+  font-size: medium;
+}
+
+.text-error span {
+  font-size: smaller;
+}
+
+.btn-validator {
+  all: unset;
+  background-color: #05ac1d;
+  border-radius: 0 0 10px 10px;
+  width: 30%;
+  height: 40px;
+  display: inline-flex;
+  cursor: pointer;
+  color: $text-color-white;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
