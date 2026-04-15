@@ -11,6 +11,14 @@ export const mainRoute: Routes = [
         loadComponent: () => import('../home-list/home-list').then((m) => m.HomeList),
       },
       {
+        path: 'userprofil',
+        loadComponent: () => import('../user-profil/user-profil').then((m) => m.UserProfil)
+      },
+      {
+        path: 'createlist',
+        loadComponent: () => import('../create-list/create-list').then((m) => m.CreateList)
+      },
+      {
         path: '**',
         redirectTo: 'homelist'
       }

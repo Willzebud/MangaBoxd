@@ -1,0 +1,81 @@
+$color-white: #fff;
+$color-primary: #ff8001;
+
+.header-component {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    #FF8001,
+    #00E054,
+    #40BCF4
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+.active {
+  color: $color-primary;
+}
+
+.active .icon {
+  background-color: $color-primary;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+}
+
+.icon-logout {
+    width: 30px;
+    height: 30px;
+}
+
+.header-group {
+  white-space: nowrap;
+  background-color: #455466;
+  border-radius: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 6px;
+}
+
+.logout {
+  height: 30px;
+  padding: 0 12px;
+  border: none;
+  background: transparent;
+  color: $color-white;
+  cursor: pointer;
+  font: inherit;
+}
+
+ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $color-white;
+  cursor: pointer;
+  text-decoration: none;
+}

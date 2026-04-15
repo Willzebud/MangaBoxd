@@ -1,1 +1,23 @@
-<p>header works!</p>
+<header class="header-component">
+  <a routerLink="homelist" class="logo">MangaBoxd</a>
+
+  <nav>
+    <ul>
+      <li>
+        <a class="header-group" routerLink="/createlist" routerLinkActive="active">
+          <app-svg-icons class="icon" [path]="'/assets/icons/add-circle-svgrepo-com.svg'" />
+          <span>List</span>
+        </a>
+      </li>
+      <li>
+        <a class="header-group" routerLink="/userprofil" routerLinkActive="active">
+          <app-svg-icons class="icon" [path]="'/assets/icons/user-svgrepo-com.svg'" />
+          <span>Profil</span>
+        </a>
+      </li>
+      <li>
+        <img class="icon-logout" src="/assets/icons/logout-svgrepo-com.svg" (click)="onLogOut()"/>
+    </li>
+    </ul>
+  </nav>
+</header>

@@ -7,7 +7,8 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthUserService {
-  private readonly apiUrl = 'https://api.freeprojectapi.com/api/UserApp';
+  private readonly authApiUrl = 'https://api.freeprojectapi.com/api/UserApp';
+  
   private http = inject(HttpClient);
 
   private readonly TOKEN_KEY = 'accessToken';
@@ -25,11 +26,11 @@ export class AuthUserService {
   }
 
   registerUser(user: UserRegister): Observable<UserRegister> {
-    return this.http.post<UserRegister>(`${this.apiUrl}/CreateNewUser`, user);
+    return this.http.post<UserRegister>(`${this.authApiUrl}/CreateNewUser`, user);
   }
 
   loginUser(user: UserLogin): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, user).pipe(
+    return this.http.post<LoginResponse>(`${this.authApiUrl}/login`, user).pipe(
       tap((res) => {
         this.setToken(res.token);
       }),

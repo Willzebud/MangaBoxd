@@ -1,8 +1,4 @@
 import { Routes } from '@angular/router';
-import { Login } from './login/login';
-import { Register } from './register/register';
-import { HomeList } from './home-list/home-list';
-import { MainContainer } from './main/containers/main-container/main-container';
 import { authGuard } from './core/guards/auth.guard';
 import { guestGuard } from './core/guards/guest.guard';
 
