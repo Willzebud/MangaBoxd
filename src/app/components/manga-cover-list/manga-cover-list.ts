@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { mangaService } from '../../core/services/manga-service';
+import { MangaService } from '../../core/services/manga-service';
 import { CommonModule, SlicePipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -10,8 +10,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrl: './manga-cover-list.scss',
 })
 export class MangaCoverList {
-  private mangaService = inject(mangaService);
+  private mangaService = inject(MangaService);
   public mangas = toSignal(this.mangaService.getManga())
-  //public mangas = this.mangaService.getManga()
 
 }

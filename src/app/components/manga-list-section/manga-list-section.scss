@@ -1,33 +1,37 @@
+body {
+  width: 100%;
+}
+
 h2 {
-    color: white;
+  color: white;
 }
 
 p {
-    color: white;
-    text-align: justify;
+  color: white;
+  text-align: justify;
 }
 
 span {
-    color: white
+  color: white;
 }
 
 .manga-section {
-    margin: 0 40px;
+  margin: 0 40px;
 }
 
 .manga-group {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .info-section {
-    display: flex;
-    gap: 15px;
+  display: flex;
+  gap: 15px;
 }
 
 .like-group {
-    display: flex;
-    gap: 6px;
+  display: flex;
+  gap: 6px;
 }
 
 .like-group .icon {

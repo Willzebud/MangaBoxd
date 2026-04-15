@@ -1,6 +1,7 @@
 .cards {
   display: flex;
-  overflow: hidden;
+  //overflow: hidden;
+  //padding: 0 20px;
 }
 
 .card {
@@ -10,5 +11,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.card:not(:last-child) {
   margin-right: -120px;
 }

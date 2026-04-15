@@ -1,31 +1,32 @@
 <div class="manga-section">
   <div class="manga-group">
     <app-manga-cover-list />
-    <div class="text-section">
-      <h2 class="title-section">Manga les plus vendu de 2025</h2>
-      <p>
-        Une sélection des mangas les plus marquants de 2025, entre suites attendues et nouvelles
-        pépites. On retrouve des titres comme Jujutsu Kaisen, où les combats atteignent leur apogée,
-        ou Chainsaw Man, toujours plus sombre et imprévisible avec Denji face à des démons toujours
-        plus puissants. Les nouvelles séries comme Kagurabachi commencent aussi à s’imposer avec une
-        ambiance intense et un univers prometteur.
-      </p>
-      <div class="info-section">
-        <span>WillBud</span>
-        <span>10 mangas</span>
-        <div class="like-group">
-          <app-svg-icons class="icon" [path]="'/assets/icons/eye-svgrepo-com.svg'" />
-          <span>4000</span>
-        </div>
-        <div class="like-group">
-          <app-svg-icons class="icon" [path]="'/assets/icons/heart-svgrepo-com.svg'" />
-          <span>1000</span>
-        </div>
-        <div class="like-group">
-          <app-svg-icons class="icon" [path]="'/assets/icons/message-square-lines-alt-svgrepo-com.svg'" />
-          <span>300</span>
+    @for (mangaList of mangaLists(); track mangaList.list_id) {
+      <div class="text-section">
+        <h2 class="title-section">{{mangaList.list_title}}</h2>
+        <p>
+          {{mangaList.list_description}}
+        </p>
+        <div class="info-section">
+          <span>{{mangaList.list_creator}}</span>
+          <span>{{mangaList.list_manga_number}} mangas</span>
+          <div class="like-group">
+            <app-svg-icons class="icon" [path]="'/assets/icons/eye-svgrepo-com.svg'" />
+            <span>{{mangaList.list_view_number}}</span>
+          </div>
+          <div class="like-group">
+            <app-svg-icons class="icon" [path]="'/assets/icons/heart-svgrepo-com.svg'" />
+            <span>{{mangaList.list_like_number}}</span>
+          </div>
+          <div class="like-group">
+            <app-svg-icons
+              class="icon"
+              [path]="'/assets/icons/message-square-lines-alt-svgrepo-com.svg'"
+            />
+            <span>{{mangaList.list_comment_number}}</span>
+          </div>
         </div>
       </div>
-    </div>
+    }
   </div>
 </div>
