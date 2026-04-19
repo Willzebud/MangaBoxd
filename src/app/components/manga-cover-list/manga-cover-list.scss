@@ -1,7 +1,5 @@
 .cards {
   display: flex;
-  //overflow: hidden;
-  //padding: 0 20px;
 }
 
 .card {
@@ -15,4 +13,60 @@
 
 .card:not(:last-child) {
   margin-right: -120px;
+}
+
+@media (min-width: 200px) {
+  .card {
+    width: 170px;
+    height: 220px;
+  }
+}
+
+@media (min-width: 420px) {
+  .card {
+    width: 180px;
+    height: 240px;
+  }
+}
+
+@media (min-width: 500px) {
+  .card {
+    width: 200px;
+    height: 260px;
+  }
+}
+
+@media (min-width: 600px) {
+  .card {
+    width: 210px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 650px) {
+  .card {
+    width: 215px;
+    height: 310px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 220px;
+    height: 320px;
+  }
+}
+
+@media (min-width: 790px) {
+  .card {
+    width: 240px;
+    height: 360px;
+  }
+}
+
+@media (min-width: 890px) {
+  .card {
+    width: 260px;
+    height: 380px;
+  }
 }

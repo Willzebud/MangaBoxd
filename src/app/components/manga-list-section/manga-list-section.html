@@ -1,32 +1,32 @@
-<div class="manga-section">
-  <div class="manga-group">
-    <app-manga-cover-list />
-    @for (mangaList of mangaLists(); track mangaList.list_id) {
+<div class="manga-group">
+  @for (mangaList of mangaLists(); track mangaList.list_id) {
+    <div class="manga-element">
+      <app-manga-cover-list [dataArray]="mangaList.mangas" />
       <div class="text-section">
-        <h2 class="title-section">{{mangaList.list_title}}</h2>
+        <h2 class="title-section">{{ mangaList.list_title }}</h2>
         <p>
-          {{mangaList.list_description}}
+          {{ mangaList.list_description }}
         </p>
         <div class="info-section">
-          <span>{{mangaList.list_creator}}</span>
-          <span>{{mangaList.list_manga_number}} mangas</span>
+          <span>{{ mangaList.list_creator }}</span>
+          <span>{{ mangaList.list_manga_number }} mangas</span>
           <div class="like-group">
             <app-svg-icons class="icon" [path]="'/assets/icons/eye-svgrepo-com.svg'" />
-            <span>{{mangaList.list_view_number}}</span>
+            <span>{{ mangaList.list_view_number }}</span>
           </div>
           <div class="like-group">
             <app-svg-icons class="icon" [path]="'/assets/icons/heart-svgrepo-com.svg'" />
-            <span>{{mangaList.list_like_number}}</span>
+            <span>{{ mangaList.list_like_number }}</span>
           </div>
           <div class="like-group">
             <app-svg-icons
               class="icon"
               [path]="'/assets/icons/message-square-lines-alt-svgrepo-com.svg'"
             />
-            <span>{{mangaList.list_comment_number}}</span>
+            <span>{{ mangaList.list_comment_number }}</span>
           </div>
         </div>
       </div>
-    }
-  </div>
+    </div>
+  }
 </div>

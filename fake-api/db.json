@@ -83,6 +83,168 @@
       "list_view_number": 4000,
       "list_like_number": 1000,
       "list_comment_number": 300
+    },
+    {
+      "list_id": 2,
+      "list_title": "My favorite Manga",
+      "list_description": "Une sélection des mangas les plus marquants de 2025, entre suites attendues et nouvelles pépites. On retrouve des titres comme Jujutsu Kaisen, où les combats atteignent leur apogée, ou Chainsaw Man, toujours plus sombre et imprévisible avec Denji face à des démons toujours plus puissants. Les nouvelles séries comme Kagurabachi commencent aussi à s'imposer avec une ambiance intense et un univers prometteur.",
+      "mangas": [
+        {
+          "manga_id": 1,
+          "title": "Berserk",
+          "description": "His name is Guts, the Black Swordsman, a feared warrior spoken of only in whispers. Bearer of a gigantic sword, an iron hand, and the scars of countless battles and tortures, his flesh is also indelibly marked with The Brand, an unholy symbol that draws the forces of darkness to him and dooms him as their sacrifice. But Guts won't take his fate lying down; he'll cut a crimson swath of carnage through the ranks of the damned—and anyone else foolish enough to oppose him! Accompanied by Puck the Elf, more an annoyance than a companion, Guts relentlessly follows a dark, bloodstained path that leads only to death...or vengeance.",
+          "cover": "https://www.image2url.com/r2/default/images/1776182229705-da2fdc6f-74b7-4474-9efc-180022d3dd09.jpg"
+        },
+        {
+          "manga_id": 2,
+          "title": "Hunter X Hunter",
+          "description": "Gon might be a country boy, but he has high aspirations. Despite his Aunt Mito's protests, Gon decides to follow in his father's footsteps and become a legendary Hunter. The Hunter hopefuls begin their journey by storm-tossed ship, where Gon meets Leorio and Kurapika, the only other applicants who aren't devastated by bouts of seasickness. Having survived the terrors of the high seas, Gon and his companions now have to prove their worth in a variety of tests in order to find the elusive Exam Hall. And once they get there, will they ever leave alive...?",
+          "cover": "https://www.image2url.com/r2/default/images/1776237764815-d813b4af-e6cf-421f-8894-e0986e9bd421.jpg"
+        },
+        {
+          "manga_id": 3,
+          "title": "Chainsaw Man",
+          "description": "The name says it all! Denji's life of poverty is changed forever when he merges with his pet chainsaw dog, Pochita! Now he's living in the big city and an official Devil Hunter. But he's got a lot to learn about his new job and chainsaw powers!",
+          "cover": "https://www.image2url.com/r2/default/images/1776237808368-013ec75d-cbdd-44ba-9f68-32245dd7e788.jpg"
+        },
+        {
+          "manga_id": 4,
+          "title": "Jujutsu Kaisen",
+          "description": "Although Yuji Itadori looks like your average teenager, his immense physical strength is something to behold! Every sports club wants him to join, but Itadori would rather hang out with the school outcasts in the Occult Research Club. One day, the club manages to get their hands on a sealed cursed object. Little do they know the terror they'll unleash when they break the seal…",
+          "cover": "https://www.image2url.com/r2/default/images/1776237884539-c037ba55-78ec-4fd9-88e9-0a5abb9e5330.jpg"
+        },
+        {
+          "manga_id": 5,
+          "title": "Naruto",
+          "description": "Before Naruto's birth, a great demon fox had attacked the Hidden Leaf Village. A man known as the 4th Hokage sealed the demon inside the newly born Naruto, causing him to unknowingly grow up detested by his fellow villagers. Despite his lack of talent in many areas of ninjutsu, Naruto strives for only one goal: to gain the title of Hokage, the strongest ninja in his village. Desiring the respect he never received, Naruto works towards his dream with fellow friends Sasuke and Sakura and mentor Kakashi as they go through many trials and battles that come with being a ninja.",
+          "cover": "https://www.image2url.com/r2/default/images/1776237970223-345dc962-adc3-4c87-9548-cefd18dab829.jpg"
+        },
+        {
+          "manga_id": 6,
+          "title": "Monster",
+          "description": "Everyone faces uncertainty at some point in their lives. Even a brilliant surgeon like Kenzo Tenma is no exception. But there's no way he could have known that his decision to stop chasing professional success and instead concentrate on his oath to save peoples' lives would result in the birth of an abomination. The questions of good and evil now take on a terrifyingly real dimension. Years later, in Germany during the tumultuous post-reunification period, middle-aged childless couples are being killed one after another. The serial killer's identity is known. The reasons why he kills are not. Dr. Tenma sets out on a journey to find the killer's twin sister, who may hold some clues to solving the enigma of the “Monster.",
+          "cover": "https://www.image2url.com/r2/default/images/1776238026364-f081e3f9-8af9-40c3-a619-409a9019ebb8.jpg"
+        },
+        {
+          "manga_id": 7,
+          "title": "Solo Leveling",
+          "description": "In a world where awakened beings called “Hunters” must battle deadly monsters to protect humanity, Seong Jin-U, nicknamed “the weakest hunter of all mankind,” finds himself in a constant struggle for survival. One day, after a brutal encounter in an overpowered dungeon wipes out his party and threatens to end his life, a mysterious System chooses him as its sole player: Jin-U has been granted the rare opportunity to level up his abilities, possibly beyond any known limits. Follow Jin-U's journey as he takes on ever-stronger enemies, both human and monster, to discover the secrets deep within the dungeons and the ultimate extent of his powers.",
+          "cover": "https://www.image2url.com/r2/default/images/1776238079276-683638d8-a25e-4686-88a0-59fea79f4de4.jpg"
+        }
+      ],
+      "list_creator": "WillBud",
+      "list_manga_number": 7,
+      "list_view_number": 4000,
+      "list_like_number": 1000,
+      "list_comment_number": 300
+    },
+    {
+      "list_id": 3,
+      "list_title": "My favorite Manga",
+      "list_description": "Une sélection des mangas les plus marquants de 2025, entre suites attendues et nouvelles pépites. On retrouve des titres comme Jujutsu Kaisen, où les combats atteignent leur apogée, ou Chainsaw Man, toujours plus sombre et imprévisible avec Denji face à des démons toujours plus puissants. Les nouvelles séries comme Kagurabachi commencent aussi à s'imposer avec une ambiance intense et un univers prometteur.",
+      "mangas": [
+        {
+          "manga_id": 1,
+          "title": "Berserk",
+          "description": "His name is Guts, the Black Swordsman, a feared warrior spoken of only in whispers. Bearer of a gigantic sword, an iron hand, and the scars of countless battles and tortures, his flesh is also indelibly marked with The Brand, an unholy symbol that draws the forces of darkness to him and dooms him as their sacrifice. But Guts won't take his fate lying down; he'll cut a crimson swath of carnage through the ranks of the damned—and anyone else foolish enough to oppose him! Accompanied by Puck the Elf, more an annoyance than a companion, Guts relentlessly follows a dark, bloodstained path that leads only to death...or vengeance.",
+          "cover": "https://www.image2url.com/r2/default/images/1776182229705-da2fdc6f-74b7-4474-9efc-180022d3dd09.jpg"
+        },
+        {
+          "manga_id": 2,
+          "title": "Hunter X Hunter",
+          "description": "Gon might be a country boy, but he has high aspirations. Despite his Aunt Mito's protests, Gon decides to follow in his father's footsteps and become a legendary Hunter. The Hunter hopefuls begin their journey by storm-tossed ship, where Gon meets Leorio and Kurapika, the only other applicants who aren't devastated by bouts of seasickness. Having survived the terrors of the high seas, Gon and his companions now have to prove their worth in a variety of tests in order to find the elusive Exam Hall. And once they get there, will they ever leave alive...?",
+          "cover": "https://www.image2url.com/r2/default/images/1776237764815-d813b4af-e6cf-421f-8894-e0986e9bd421.jpg"
+        },
+        {
+          "manga_id": 3,
+          "title": "Chainsaw Man",
+          "description": "The name says it all! Denji's life of poverty is changed forever when he merges with his pet chainsaw dog, Pochita! Now he's living in the big city and an official Devil Hunter. But he's got a lot to learn about his new job and chainsaw powers!",
+          "cover": "https://www.image2url.com/r2/default/images/1776237808368-013ec75d-cbdd-44ba-9f68-32245dd7e788.jpg"
+        },
+        {
+          "manga_id": 4,
+          "title": "Jujutsu Kaisen",
+          "description": "Although Yuji Itadori looks like your average teenager, his immense physical strength is something to behold! Every sports club wants him to join, but Itadori would rather hang out with the school outcasts in the Occult Research Club. One day, the club manages to get their hands on a sealed cursed object. Little do they know the terror they'll unleash when they break the seal…",
+          "cover": "https://www.image2url.com/r2/default/images/1776237884539-c037ba55-78ec-4fd9-88e9-0a5abb9e5330.jpg"
+        },
+        {
+          "manga_id": 5,
+          "title": "Naruto",
+          "description": "Before Naruto's birth, a great demon fox had attacked the Hidden Leaf Village. A man known as the 4th Hokage sealed the demon inside the newly born Naruto, causing him to unknowingly grow up detested by his fellow villagers. Despite his lack of talent in many areas of ninjutsu, Naruto strives for only one goal: to gain the title of Hokage, the strongest ninja in his village. Desiring the respect he never received, Naruto works towards his dream with fellow friends Sasuke and Sakura and mentor Kakashi as they go through many trials and battles that come with being a ninja.",
+          "cover": "https://www.image2url.com/r2/default/images/1776237970223-345dc962-adc3-4c87-9548-cefd18dab829.jpg"
+        },
+        {
+          "manga_id": 6,
+          "title": "Monster",
+          "description": "Everyone faces uncertainty at some point in their lives. Even a brilliant surgeon like Kenzo Tenma is no exception. But there's no way he could have known that his decision to stop chasing professional success and instead concentrate on his oath to save peoples' lives would result in the birth of an abomination. The questions of good and evil now take on a terrifyingly real dimension. Years later, in Germany during the tumultuous post-reunification period, middle-aged childless couples are being killed one after another. The serial killer's identity is known. The reasons why he kills are not. Dr. Tenma sets out on a journey to find the killer's twin sister, who may hold some clues to solving the enigma of the “Monster.",
+          "cover": "https://www.image2url.com/r2/default/images/1776238026364-f081e3f9-8af9-40c3-a619-409a9019ebb8.jpg"
+        },
+        {
+          "manga_id": 7,
+          "title": "Solo Leveling",
+          "description": "In a world where awakened beings called “Hunters” must battle deadly monsters to protect humanity, Seong Jin-U, nicknamed “the weakest hunter of all mankind,” finds himself in a constant struggle for survival. One day, after a brutal encounter in an overpowered dungeon wipes out his party and threatens to end his life, a mysterious System chooses him as its sole player: Jin-U has been granted the rare opportunity to level up his abilities, possibly beyond any known limits. Follow Jin-U's journey as he takes on ever-stronger enemies, both human and monster, to discover the secrets deep within the dungeons and the ultimate extent of his powers.",
+          "cover": "https://www.image2url.com/r2/default/images/1776238079276-683638d8-a25e-4686-88a0-59fea79f4de4.jpg"
+        }
+      ],
+      "list_creator": "WillBud",
+      "list_manga_number": 7,
+      "list_view_number": 4000,
+      "list_like_number": 1000,
+      "list_comment_number": 300
+    },
+    {
+      "list_id": 4,
+      "list_title": "My favorite Manga",
+      "list_description": "Une sélection des mangas les plus marquants de 2025, entre suites attendues et nouvelles pépites. On retrouve des titres comme Jujutsu Kaisen, où les combats atteignent leur apogée, ou Chainsaw Man, toujours plus sombre et imprévisible avec Denji face à des démons toujours plus puissants. Les nouvelles séries comme Kagurabachi commencent aussi à s'imposer avec une ambiance intense et un univers prometteur.",
+      "mangas": [
+        {
+          "manga_id": 1,
+          "title": "Berserk",
+          "description": "His name is Guts, the Black Swordsman, a feared warrior spoken of only in whispers. Bearer of a gigantic sword, an iron hand, and the scars of countless battles and tortures, his flesh is also indelibly marked with The Brand, an unholy symbol that draws the forces of darkness to him and dooms him as their sacrifice. But Guts won't take his fate lying down; he'll cut a crimson swath of carnage through the ranks of the damned—and anyone else foolish enough to oppose him! Accompanied by Puck the Elf, more an annoyance than a companion, Guts relentlessly follows a dark, bloodstained path that leads only to death...or vengeance.",
+          "cover": "https://www.image2url.com/r2/default/images/1776182229705-da2fdc6f-74b7-4474-9efc-180022d3dd09.jpg"
+        },
+        {
+          "manga_id": 2,
+          "title": "Hunter X Hunter",
+          "description": "Gon might be a country boy, but he has high aspirations. Despite his Aunt Mito's protests, Gon decides to follow in his father's footsteps and become a legendary Hunter. The Hunter hopefuls begin their journey by storm-tossed ship, where Gon meets Leorio and Kurapika, the only other applicants who aren't devastated by bouts of seasickness. Having survived the terrors of the high seas, Gon and his companions now have to prove their worth in a variety of tests in order to find the elusive Exam Hall. And once they get there, will they ever leave alive...?",
+          "cover": "https://www.image2url.com/r2/default/images/1776237764815-d813b4af-e6cf-421f-8894-e0986e9bd421.jpg"
+        },
+        {
+          "manga_id": 3,
+          "title": "Chainsaw Man",
+          "description": "The name says it all! Denji's life of poverty is changed forever when he merges with his pet chainsaw dog, Pochita! Now he's living in the big city and an official Devil Hunter. But he's got a lot to learn about his new job and chainsaw powers!",
+          "cover": "https://www.image2url.com/r2/default/images/1776237808368-013ec75d-cbdd-44ba-9f68-32245dd7e788.jpg"
+        },
+        {
+          "manga_id": 4,
+          "title": "Jujutsu Kaisen",
+          "description": "Although Yuji Itadori looks like your average teenager, his immense physical strength is something to behold! Every sports club wants him to join, but Itadori would rather hang out with the school outcasts in the Occult Research Club. One day, the club manages to get their hands on a sealed cursed object. Little do they know the terror they'll unleash when they break the seal…",
+          "cover": "https://www.image2url.com/r2/default/images/1776237884539-c037ba55-78ec-4fd9-88e9-0a5abb9e5330.jpg"
+        },
+        {
+          "manga_id": 5,
+          "title": "Naruto",
+          "description": "Before Naruto's birth, a great demon fox had attacked the Hidden Leaf Village. A man known as the 4th Hokage sealed the demon inside the newly born Naruto, causing him to unknowingly grow up detested by his fellow villagers. Despite his lack of talent in many areas of ninjutsu, Naruto strives for only one goal: to gain the title of Hokage, the strongest ninja in his village. Desiring the respect he never received, Naruto works towards his dream with fellow friends Sasuke and Sakura and mentor Kakashi as they go through many trials and battles that come with being a ninja.",
+          "cover": "https://www.image2url.com/r2/default/images/1776237970223-345dc962-adc3-4c87-9548-cefd18dab829.jpg"
+        },
+        {
+          "manga_id": 6,
+          "title": "Monster",
+          "description": "Everyone faces uncertainty at some point in their lives. Even a brilliant surgeon like Kenzo Tenma is no exception. But there's no way he could have known that his decision to stop chasing professional success and instead concentrate on his oath to save peoples' lives would result in the birth of an abomination. The questions of good and evil now take on a terrifyingly real dimension. Years later, in Germany during the tumultuous post-reunification period, middle-aged childless couples are being killed one after another. The serial killer's identity is known. The reasons why he kills are not. Dr. Tenma sets out on a journey to find the killer's twin sister, who may hold some clues to solving the enigma of the “Monster.",
+          "cover": "https://www.image2url.com/r2/default/images/1776238026364-f081e3f9-8af9-40c3-a619-409a9019ebb8.jpg"
+        },
+        {
+          "manga_id": 7,
+          "title": "Solo Leveling",
+          "description": "In a world where awakened beings called “Hunters” must battle deadly monsters to protect humanity, Seong Jin-U, nicknamed “the weakest hunter of all mankind,” finds himself in a constant struggle for survival. One day, after a brutal encounter in an overpowered dungeon wipes out his party and threatens to end his life, a mysterious System chooses him as its sole player: Jin-U has been granted the rare opportunity to level up his abilities, possibly beyond any known limits. Follow Jin-U's journey as he takes on ever-stronger enemies, both human and monster, to discover the secrets deep within the dungeons and the ultimate extent of his powers.",
+          "cover": "https://www.image2url.com/r2/default/images/1776238079276-683638d8-a25e-4686-88a0-59fea79f4de4.jpg"
+        }
+      ],
+      "list_creator": "WillBud",
+      "list_manga_number": 7,
+      "list_view_number": 4000,
+      "list_like_number": 1000,
+      "list_comment_number": 300
     }
   ]
 }

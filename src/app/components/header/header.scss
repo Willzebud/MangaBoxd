@@ -1,9 +1,13 @@
 $color-white: #fff;
 $color-primary: #ff8001;
 
-.header-component {
+.header {
   position: sticky;
   top: 0;
+  z-index: 100;
+}
+
+.header-component {
   width: 100%;
   display: flex;
   align-items: center;
@@ -11,17 +15,24 @@ $color-primary: #ff8001;
   padding: 1rem;
   margin: 0 auto;
   margin-bottom: 20px;
+  background-color: #14181c;
+}
+
+.header-component.open {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 0 auto;
+  margin-bottom: 0px;
+  background-color: #14181c;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  background: linear-gradient(
-    90deg,
-    #FF8001,
-    #00E054,
-    #40BCF4
-  );
+  background: linear-gradient(90deg, #ff8001, #00e054, #40bcf4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
@@ -35,14 +46,35 @@ $color-primary: #ff8001;
   background-color: $color-primary;
 }
 
+.menu-mobile-circle.active {
+  background-color: $color-primary;
+}
+
 .icon {
   width: 15px;
   height: 15px;
 }
 
 .icon-logout {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.menu-mobile {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-mobile-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 100%;
+  background-color: #14181c;
 }
 
 .header-group {
@@ -78,4 +110,74 @@ a {
   color: $color-white;
   cursor: pointer;
   text-decoration: none;
+}
+
+.header-mobile-component {
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  display: none;
+  padding: 1rem;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  z-index: 100;
+  background-color: #14181c;
+}
+
+.header-mobile-component.open {
+  display: flex;
+}
+
+.active {
+  color: $color-primary;
+}
+
+.active .mobile-icon {
+  background-color: $color-primary;
+}
+
+
+
+.mobile-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.header-mobile-group {
+  white-space: nowrap;
+  background-color: #455466;
+  border-radius: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 6px;
+}
+
+ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $color-white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header-mobile-component span {
+  font-size: 12px;
+}
+
+@media (max-width: 460px) {
+  .header-component nav {
+    display: none;
+  }
+
+  .menu-mobile {
+    display: flex;
+  }
 }

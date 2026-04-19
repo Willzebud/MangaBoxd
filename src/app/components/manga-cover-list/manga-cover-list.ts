@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { MangaService } from '../../core/services/manga-service';
 import { CommonModule, SlicePipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Manga, MangaList } from '../../core/models/manga-models';
 
 @Component({
   selector: 'app-manga-cover-list',
@@ -10,7 +11,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrl: './manga-cover-list.scss',
 })
 export class MangaCoverList {
-  private mangaService = inject(MangaService);
-  public mangas = toSignal(this.mangaService.getManga())
+  public dataArray = input.required<Manga[]>()
 
 }

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { MainContainer } from './containers/main-container/main-container';
+import { HomeList } from '../home-list/home-list';
 
 export const mainRoute: Routes = [
   {

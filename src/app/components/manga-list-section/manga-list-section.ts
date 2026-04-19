@@ -11,8 +11,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrl: './manga-list-section.scss',
 })
 export class MangaListSection {
-  private mangaService = inject(MangaService)
+  public mangaService = inject(MangaService)
   public mangaLists = toSignal(this.mangaService.getMangaList())
-
-  //test(){console.log("MangaList", this.mangaLists)}
 }
