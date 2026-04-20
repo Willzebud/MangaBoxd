@@ -1,12 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthCardForm } from '../components/auth-card-form/auth-card-form';
 import { AuthUserService } from '../core/services/auth-user-service';
+import { form, required } from '@angular/forms/signals';
+import { AuthModel } from '../core/models/auth-user-models';
 
 @Component({
   selector: 'app-login',
-  imports: [AuthCardForm, ReactiveFormsModule],
+  imports: [AuthCardForm],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -14,12 +15,18 @@ export class Login {
   public readonly isSubmitting = signal(false);
 
   private readonly router = inject(Router);
-  private readonly formBuilder = inject(FormBuilder);
   private readonly authService = inject(AuthUserService);
 
-  public loginForm: FormGroup = this.formBuilder.group({
-    emailId: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
+  private readonly loginModel = signal<AuthModel>({
+    emailId: '',
+    password: '',
+  });
+
+  private readonly errorMessage = signal<string | null>(null);
+
+  public loginForm = form(this.loginModel, (path) => {
+    required(path.emailId, { message: 'Email is required' });
+    required(path.password, { message: 'Passwod is required' });
   });
 
   onNavigateToRegister(): void {
@@ -28,18 +35,18 @@ export class Login {
 
   public onSubmitLogin(): void {
     this.isSubmitting.set(true);
+    this.errorMessage.set(null);
 
-    this.authService.loginUser(this.loginForm.value).subscribe(
-      (res) => {
+    this.authService.loginUser(this.loginModel()).subscribe({
+      next: (response) => {
         alert('User login success');
         this.isSubmitting.set(false);
-        this.loginForm.reset();
         this.router.navigate(['/homelist']);
       },
-      (error) => {
-        alert(error);
+      error: () => {
+        this.errorMessage.set('Échec de la connexion');
         this.isSubmitting.set(false);
       },
-    );
+    });
   }
 }

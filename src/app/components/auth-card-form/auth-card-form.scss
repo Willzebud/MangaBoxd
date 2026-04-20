@@ -13,9 +13,9 @@ $text-color-white: #ffffff;
 
 .auth-form {
   background-color: #455466;
-  padding: 10px;
-  width: 30%;
-  border-radius: 10px 10px 0 0;
+  padding-top: 10px;
+  width: 450px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,7 +76,7 @@ a {
   justify-content: center;
 }
 
-@media (min-width: 320px) {
+@media screen and (min-width: 320px) {
   h1 {
     text-align: center;
     color: $text-color-white;
@@ -93,124 +93,13 @@ a {
   }
 
   .auth-form {
-    width: 90%;
+    max-width: 90%;
   }
 
   .btn-validator {
-    width: 90%;
-  }
-}
-
-@media (min-width: 420px) {
-  a {
-    background-color: #677688;
-    color: $text-color-white;
-    padding: 6px;
-    border-radius: 100px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  .auth-form {
-    width: 90%;
-  }
-
-  .btn-validator {
-    width: 90%;
-  }
-}
-
-@media (min-width: 500px) {
-
-  .auth-form {
-    width: 75%;
-  }
-
-  .btn-validator {
-    width: 75%;
-  }
-}
-
-@media (min-width: 600px) {
-  a {
-    background-color: #677688;
-    color: $text-color-white;
-    padding: 6px;
-    border-radius: 100px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  .auth-form {
-    width: 70%;
-  }
-
-  .btn-validator {
-    width: 70%;
-  }
-}
-
-@media (min-width: 700px) {
-  a {
-    background-color: #677688;
-    color: $text-color-white;
-    padding: 6px;
-    border-radius: 100px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  .auth-form {
-    width: 60%;
-  }
-
-  .btn-validator {
-    width: 60%;
-  }
-}
-
-@media (min-width: 850px) {
-  a {
-    background-color: #677688;
-    color: $text-color-white;
-    padding: 6px;
-    border-radius: 100px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  .auth-form {
-    width: 50%;
-  }
-
-  .btn-validator {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1000px) {
-  h1 {
-    text-align: center;
-    color: $text-color-white;
-    font-size: xx-large;
-  }
-
-  .auth-form {
-    width: 40%;
-  }
-
-  .btn-validator {
-    width: 40%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .auth-form {
-    width: 30%;
-  }
-
-  .btn-validator {
-    width: 30%;
+        width: 100%;
+        padding-top: 0px;
+        margin-top: 10px;
   }
 }
 

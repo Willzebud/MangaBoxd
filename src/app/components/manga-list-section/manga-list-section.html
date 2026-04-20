@@ -11,16 +11,16 @@
           <span>{{ mangaList.list_creator }}</span>
           <span>{{ mangaList.list_manga_number }} mangas</span>
           <div class="like-group">
-            <app-svg-icons class="icon" [path]="'/assets/icons/eye-svgrepo-com.svg'" />
+            <app-svg-icons class="icon-eye" [path]="'/assets/icons/eye-svgrepo-com.svg'" />
             <span>{{ mangaList.list_view_number }}</span>
           </div>
           <div class="like-group">
-            <app-svg-icons class="icon" [path]="'/assets/icons/heart-svgrepo-com.svg'" />
+            <app-svg-icons class="icon-heart" [path]="'/assets/icons/heart-svgrepo-com.svg'" />
             <span>{{ mangaList.list_like_number }}</span>
           </div>
           <div class="like-group">
             <app-svg-icons
-              class="icon"
+              class="icon-comment"
               [path]="'/assets/icons/message-square-lines-alt-svgrepo-com.svg'"
             />
             <span>{{ mangaList.list_comment_number }}</span>

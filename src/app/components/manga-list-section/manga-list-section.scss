@@ -1,3 +1,8 @@
+$color-primary: #ff8001;
+$color-secondary: #00e054;
+$color-tertiary: #40bcf4;
+$color-quarternary: #455466;
+
 body {
   width: 100%;
 }
@@ -12,7 +17,7 @@ p {
 }
 
 span {
-  color: #455466;
+  color: $color-quarternary;
 }
 
 .manga-group {
@@ -37,56 +42,46 @@ span {
   gap: 6px;
 }
 
-.icon {
-  width: 15px;
-  height: 15px;
-  color: white;
-}
+.icon-eye {
+    width: 20px;
+    height: 20px;
+    background-color: $color-primary;
+  }
 
-@media (min-width: 200px) {
+  .icon-heart {
+    width: 20px;
+    height: 20px;
+    background-color: $color-secondary;
+  }
+
+  .icon-comment {
+    width: 20px;
+    height: 20px;
+    background-color: $color-tertiary;
+  }
+
+@media screen and (min-width: 320px) {
   .manga-element {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 5%;
-    gap: 10px;
-  }
-
-  .icon {
-    width: 10px;
-    height: 10px;
-    color: white;
-  }
-
-  .info-section span {
-    font-size: 9px;
-    margin-bottom: 10%;
-  }
-
-  h2 {
-    font-size: medium;
-  }
-
-  p {
-    font-size: small;
-  }
-
-  span {
-    color: white;
-  }
-}
-
-@media (min-width: 320px) {
-  .manga-element {
-    display: flex;
+    justify-content: space-between;
     flex-direction: column;
     margin-bottom: 20%;
     gap: 10px;
   }
 
-  .icon {
-    width: 10px;
-    height: 10px;
-    color: white;
+  .icon-eye {
+    max-width: 12px;
+    max-height: 12px;
+  }
+
+  .icon-heart {
+    max-width: 11px;
+    max-height: 11px;
+  }
+
+  .icon-comment {
+    max-width: 11px;
+    max-height: 11px;
   }
 
   .info-section span {
@@ -107,39 +102,7 @@ span {
   }
 }
 
-@media (min-width: 370px) {
-  .manga-element {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15%;
-    gap: 10px;
-  }
-
-  .icon {
-    width: 12px;
-    height: 12px;
-    color: white;
-  }
-
-  .info-section span {
-    font-size: 12px;
-    margin-bottom: 10%;
-  }
-
-  h2 {
-    font-size: medium;
-  }
-
-  p {
-    font-size: small;
-  }
-
-  span {
-    color: white;
-  }
-}
-
-@media (min-width: 420px) {
+@media screen and (min-width: 420px) {
   .manga-element {
     display: flex;
     flex-direction: column;
@@ -147,10 +110,19 @@ span {
     gap: 10px;
   }
 
-  .icon {
-    width: 18px;
-    height: 18px;
-    color: white;
+  .icon-eye {
+    max-width: 18px;
+    max-height: 18px;
+  }
+
+  .icon-heart {
+    max-width: 18px;
+    max-height: 18px;
+  }
+
+  .icon-comment {
+    max-width: 18px;
+    max-height: 18px;
   }
 
   .info-section span {
@@ -171,39 +143,7 @@ span {
   }
 }
 
-@media (min-width: 500px) {
-  .manga-element {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10%;
-    gap: 10px;
-  }
-
-  .icon {
-    width: 20px;
-    height: 20px;
-    color: white;
-  }
-
-  .info-section span {
-    font-size: 16px;
-    margin-bottom: 10%;
-  }
-
-  h2 {
-    font-size: x-large;
-  }
-
-  p {
-    font-size: medium;
-  }
-
-  span {
-    color: white;
-  }
-}
-
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .manga-element {
     display: flex;
     flex-direction: column;
@@ -211,10 +151,19 @@ span {
     gap: 10px;
   }
 
-  .icon {
-    width: 22px;
-    height: 22px;
-    color: white;
+  .icon-eye {
+    max-width: 22px;
+    max-height: 22px;
+  }
+
+  .icon-heart {
+    max-width: 22px;
+    max-height: 22px;
+  }
+
+  .icon-comment {
+    max-width: 22px;
+    max-height: 22px;
   }
 
   .info-section span {
@@ -235,7 +184,7 @@ span {
   }
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   h2 {
   color: white;
 }
@@ -246,7 +195,7 @@ p {
 }
 
 span {
-  color: #455466;
+  color: $color-quarternary;
 }
 
 .manga-group {
@@ -272,9 +221,18 @@ span {
   gap: 6px;
 }
 
-.icon {
-  width: 15px;
-  height: 15px;
-  color: white;
-}
+.icon-eye {
+    max-width: 20px;
+    max-height: 20px;
+  }
+
+  .icon-heart {
+    max-width: 20px;
+    max-height: 20px;
+  }
+
+  .icon-comment {
+    max-width: 20px;
+    max-height: 20px;
+  }
 }
