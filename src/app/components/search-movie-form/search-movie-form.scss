@@ -16,12 +16,32 @@ $color-quinary: #2c3440;
 }
 
 .search-group-result {
-    width: 100%;
+  width: 100%;
+  position: relative;
 }
 
 .search-manga-result {
-    position: absolute;
-    background-color: #00e054;
+  position: absolute;
+  background-color: $color-quarternary;
+  width: 100%;
+}
+
+.search-manga-result ul {
+  list-style: none;
+  padding-inline-start: 0em;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.search-manga-result li {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+}
+
+.search-manga-result li:hover {
+  background-color: $color-secondary;
+  cursor: pointer;
 }
 
 .search-group-form-element {
@@ -37,11 +57,12 @@ $color-quinary: #2c3440;
   border-radius: 3px 0px 0px 3px;
   height: 30px;
   background-color: $color-tertiary;
-  width: 30%;
+  padding: 0 12px;
 }
 
 .div-label label {
-  font-size: 12px;
+  width: max-content;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -113,4 +134,12 @@ $color-quinary: #2c3440;
 
 .span-text {
   color: $color-quarternary;
+}
+
+.li-manga-title {
+  font-size: 16px;
+}
+
+.li-manga-creator {
+  font-size: 12px;
 }
