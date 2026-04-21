@@ -1,0 +1,98 @@
+$color-primary: #ff8001;
+$color-secondary: #00e054;
+$color-tertiary: #40bcf4;
+$color-quarternary: #455466;
+$color-quinary: #2C3440;
+
+* {
+  color: white;
+}
+
+h2 {
+  margin-bottom: 4px;
+}
+
+hr {
+  background: linear-gradient(90deg, $color-primary, $color-secondary, $color-tertiary);
+  height: 2px;
+  border: none;
+  border-radius: 10px;
+}
+
+.create-list-component {
+  margin: 0 380px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.create-list-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  height: 40%;
+}
+
+.left-create-group {
+  margin-top: 20px;
+}
+
+.right-create-group {
+  margin-top: 20px;
+}
+
+.element-group {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin-bottom: 40px;
+}
+
+.element-description {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.element-group label {
+  margin-bottom: 6px;
+}
+
+.element-group input {
+  height: 30px;
+  outline: none;
+  border: none;
+  color: white;
+  background: $color-quinary;
+  border-radius: 3px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-group button {
+  all: unset;
+  background-color: $color-quarternary;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  width: 20%;
+}
+
+.element-description label {
+  margin-bottom: 6px;
+}
+
+.element-description textarea {
+  height: 100%;
+  outline: none;
+  border: none;
+  color: white;
+  background: $color-quinary;
+  border-radius: 3px;
+}

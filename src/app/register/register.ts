@@ -22,19 +22,22 @@ export class Register {
   );
 
   private readonly registerModel = signal<AuthModel>({
-    emailId: '',
-    fullName: '',
+    email: '',
     password: '',
+    firstname: '',
+    lastname: '',
+    role: 'USER',
+    
   });
 
   private readonly errorMessage = signal<string | null>(null);
 
   public registerForm = form(this.registerModel, (path) => {
-    required(path.fullName!, { message: 'Pseudo is required' });
-    minLength(path.fullName!, 4, { message: 'Pseudo must be at least 4 characters long'});
+    required(path.email, { message: 'Email is required' });
+    email(path.email, { message: 'Enter a valid email adress' });
 
-    required(path.emailId, { message: 'Email is required' });
-    email(path.emailId, { message: 'Enter a valid email adress' });
+    required(path.firstname!, { message: 'Pseudo is required' });
+    required(path.lastname!, { message: 'Lastname required'});
 
     required(path.password, { message: 'Password is required' });
     pattern(path.password, this.passwordRegex, {
@@ -52,6 +55,7 @@ export class Register {
         alert('User register success');
         this.isSubmitting.set(false);
         this.router.navigate(['/login']);
+        console.log("TEST", response)
       },
       error: () => {
         this.errorMessage.set('Échec de la connexion');

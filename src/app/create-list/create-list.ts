@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Header } from "../components/header/header";
+import { CreateListForm } from "../components/create-list-form/create-list-form";
 
 @Component({
   selector: 'app-create-list',
-  imports: [Header],
+  imports: [CreateListForm],
   templateUrl: './create-list.html',
   styleUrl: './create-list.scss',
 })

@@ -18,14 +18,14 @@ export class Login {
   private readonly authService = inject(AuthUserService);
 
   private readonly loginModel = signal<AuthModel>({
-    emailId: '',
+    email: '',
     password: '',
   });
 
   private readonly errorMessage = signal<string | null>(null);
 
   public loginForm = form(this.loginModel, (path) => {
-    required(path.emailId, { message: 'Email is required' });
+    required(path.email, { message: 'Email is required' });
     required(path.password, { message: 'Passwod is required' });
   });
 

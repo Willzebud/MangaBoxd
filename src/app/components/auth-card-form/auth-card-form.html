@@ -8,13 +8,23 @@
 
     @if (isRegisterScreen()) {
       <div class="input-group">
-        <span>Pseudo</span>
-        <input type="text" [formField]="authForm().fullName!" />
+        <label>Firstname</label>
+        <input type="text" [formField]="authForm().firstname!" />
         <div class="text-error">
-          @if (
-            authForm().fullName!().touched() && authForm().fullName!().invalid()) {
-            @for (error of authForm().fullName!().errors(); track error.kind){
-              <span>{{error.message}}</span>
+          @if (authForm().firstname!().touched() && authForm().firstname!().invalid()) {
+            @for (error of authForm().firstname!().errors(); track error.kind) {
+              <span>{{ error.message }}</span>
+            }
+          }
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Lastname</label>
+        <input type="text" [formField]="authForm().lastname!" />
+        <div class="text-error">
+          @if (authForm().lastname!().touched() && authForm().lastname!().invalid()) {
+            @for (error of authForm().lastname!().errors(); track error.kind) {
+              <span>{{ error.message }}</span>
             }
           }
         </div>
@@ -22,29 +32,35 @@
     }
 
     <div class="input-group">
-      <span>Email</span>
-      <input type="email" [formField]="authForm().emailId" />
+      <label>Email</label>
+      <input type="email" [formField]="authForm().email" />
       <div class="text-error">
-        @if (authForm().emailId().touched() && authForm().emailId().invalid()) {
-          @for(error of authForm().emailId().errors(); track error.kind){
-            <span>{{error.message}}</span>
+        @if (authForm().email().touched() && authForm().email().invalid()) {
+          @for (error of authForm().email().errors(); track error.kind) {
+            <span>{{ error.message }}</span>
           }
         }
       </div>
     </div>
 
     <div class="input-group">
-      <span>Password</span>
+      <label>Password</label>
       <input type="password" [formField]="authForm().password" />
       <div class="text-error">
-        @if (
-          authForm().password().touched() && authForm().password().invalid()) {
-          @for(error of authForm().password().errors(); track error.kind){
-            <span>{{error.message}}</span>
+        @if (authForm().password().touched() && authForm().password().invalid()) {
+          @for (error of authForm().password().errors(); track error.kind) {
+            <span>{{ error.message }}</span>
           }
         }
       </div>
     </div>
-    <button type="button" [disabled]="authForm()().invalid() || isSubmitting()" (click)="onClick()" class="btn-validator">{{ btnText() }}</button>
+    <button
+      type="button"
+      [disabled]="authForm()().invalid() || isSubmitting()"
+      (click)="onClick()"
+      class="btn-validator"
+    >
+      {{ btnText() }}
+    </button>
   </form>
 </div>

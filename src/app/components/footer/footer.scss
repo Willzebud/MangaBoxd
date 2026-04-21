@@ -1,0 +1,9 @@
+$color-quarternary: #455466;
+
+div {
+    position: fixed;
+    height: 50px;
+    background-color: $color-quarternary;
+    bottom: 0;
+    width: 100%;
+}
