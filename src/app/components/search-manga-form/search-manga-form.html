@@ -6,18 +6,19 @@
       </div>
       <div class="search-group-result">
         <input
-          #searchInput
+          #inputText
           type="text"
-          (input)="onSearchUpdated(searchInput.value)"
+          (input)="onSearchUpdated(inputText.value)"
+          [value]="searchInput()"
           placeholder="Enter name of manga..."
         />
         @if (mangaData().length) {
           <div class="search-manga-result">
             <ul>
-              @for (mangaData of mangaData(); track mangaData.jinkaId) {
-                <li>
-                  <span class="li-manga-title">{{ mangaData.title }}</span>
-                  <span class="li-manga-creator">{{ mangaData.genres }}</span>
+              @for (manga of mangaData(); track manga.jikanId) {
+                <li (click)="onClickAddManga(manga)">
+                  <span class="li-manga-title">{{ manga.title }}</span>
+                  <span class="li-manga-creator">{{ manga.genres }}</span>
                 </li>
               }
             </ul>
@@ -31,10 +32,25 @@
     </div>
   </div>
 
-  <div class="div-manga-list">
-    <div class="div-manga-list-text">
-      <span class="span-title">Your list is Empty</span>
-      <span class="span-text">Add mangas using the field above.</span>
+  @if (selectedMangas().length) {
+    @for (manga of selectedMangas(); track manga.jikanId) {
+      <div class="div-manga-element-group">
+        <div class="div-manga-element">
+          <img [src]="manga.coverUrl" />
+          <div class="div-manga-element-text">
+            <span class="span-manga-title">{{ manga.title }}</span>
+            <span class="span-manga-genre">{{ manga.genres }}</span>
+          </div>
+        </div>
+        <app-svg-icons (click)="deleteMangaFromList(manga.jikanId)" class="icon-delete" [path]="'/assets/icons/delete-2-svgrepo-com.svg'"/>
+      </div>
+    }
+  } @else {
+    <div class="div-manga-list">
+      <div class="div-manga-list-text">
+        <span class="span-title">Your list is Empty</span>
+        <span class="span-text">Add mangas using the field above.</span>
+      </div>
     </div>
-  </div>
+  }
 </div>

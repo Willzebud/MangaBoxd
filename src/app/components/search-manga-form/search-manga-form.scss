@@ -7,12 +7,14 @@ $color-quinary: #2c3440;
 .search-group-component {
   width: 100%;
   height: 100%;
+  padding-bottom: 100px;
 }
 
 .search-group-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
+  margin-bottom: 15px;
 }
 
 .search-group-result {
@@ -101,7 +103,7 @@ $color-quinary: #2c3440;
   justify-content: center;
   align-items: center;
   width: 20%;
-  background-color: #455466;
+  background-color: $color-quarternary;
 }
 
 .btn-save {
@@ -114,7 +116,7 @@ $color-quinary: #2c3440;
   justify-content: center;
   align-items: center;
   width: 20%;
-  background-color: #00e054;
+  background-color: $color-secondary;
 }
 
 .div-manga-list {
@@ -147,4 +149,47 @@ $color-quinary: #2c3440;
 
 .li-manga-creator {
   font-size: 12px;
+}
+
+.div-manga-element-group {
+  border: 1px solid;
+  border-color: $color-quarternary;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.div-manga-element {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+}
+
+.div-manga-element img {
+  width: 55px;
+  height: 80px;
+  border-radius: 4px;
+}
+
+.div-manga-element-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.span-manga-title {
+  font-size: x-large;
+}
+
+.span-manga-genre {
+  font-size: small;
+}
+
+.icon-delete {
+  width: 30px;
+  height: 30px;
+  background: $color-primary;
+  margin-right: 5px;
+  cursor: pointer;
 }

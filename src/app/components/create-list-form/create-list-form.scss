@@ -84,6 +84,14 @@ hr {
   width: 20%;
 }
 
+.btn-public.is-true {
+  background: $color-primary;
+}
+
+.btn-private.is-true {
+  background-color: $color-primary;
+}
+
 .element-description label {
   margin-bottom: 6px;
 }

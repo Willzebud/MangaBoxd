@@ -14,7 +14,7 @@ export interface MangaList {
 }
 
 export interface Manga {
-  jinkaId: number;
+  jikanId: number;
   title: string;
   coverUrl: string;
   synopsis: string;
