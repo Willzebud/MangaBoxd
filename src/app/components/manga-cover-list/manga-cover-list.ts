@@ -12,5 +12,4 @@ import { Manga, MangaList } from '../../core/models/manga-models';
 })
 export class MangaCoverList {
   public dataArray = input.required<Manga[]>()
-
 }

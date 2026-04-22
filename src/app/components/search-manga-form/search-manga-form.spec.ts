@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchMovieForm } from './search-movie-form';
+import { SearchMangaForm } from './search-manga-form';
 
-describe('SearchMovieForm', () => {
-  let component: SearchMovieForm;
-  let fixture: ComponentFixture<SearchMovieForm>;
+describe('SearchMangaForm', () => {
+  let component: SearchMangaForm;
+  let fixture: ComponentFixture<SearchMangaForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchMovieForm],
+      imports: [SearchMangaForm],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SearchMovieForm);
+    fixture = TestBed.createComponent(SearchMangaForm);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

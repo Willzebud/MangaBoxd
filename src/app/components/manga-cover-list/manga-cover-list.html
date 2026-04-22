@@ -1,5 +1,5 @@
 <div class="cards">
-  @for (manga of dataArray() | slice: 0 : 5; track manga.manga_id; let i = $index) {
-    <img class="card" [style.z-index]="4 - i" [src]="manga.cover" />
+  @for (manga of dataArray() | slice: 0 : 5; track manga.jinkaId; let i = $index) {
+    <img class="card" [style.z-index]="4 - i" [src]="manga.coverUrl" />
   }
 </div>

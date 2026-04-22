@@ -18,5 +18,6 @@ export interface Manga {
   title: string;
   coverUrl: string;
   synopsis: string;
-  addedAt: string;
+  status: string;
+  genres: []
 }

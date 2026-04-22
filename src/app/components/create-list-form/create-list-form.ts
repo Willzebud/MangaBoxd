@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { SearchMovieForm } from "../search-movie-form/search-movie-form";
+import { SearchMangaForm } from "../search-manga-form/search-manga-form";
 
 @Component({
   selector: 'app-create-list-form',
-  imports: [SearchMovieForm],
+  imports: [SearchMangaForm],
   templateUrl: './create-list-form.html',
   styleUrl: './create-list-form.scss',
 })
