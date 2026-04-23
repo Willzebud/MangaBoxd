@@ -1,3 +1,4 @@
+$text-error-color: #ffdd02;
 $color-primary: #ff8001;
 $color-secondary: #00e054;
 $color-tertiary: #40bcf4;
@@ -73,23 +74,36 @@ hr {
   gap: 20px;
 }
 
-.btn-group button {
+.btn-public {
   all: unset;
   background-color: $color-quarternary;
   border-radius: 4px;
-  padding: 5px;
+  padding: 10px;
   font-size: 12px;
   display: flex;
   justify-content: center;
   width: 20%;
+  cursor: pointer;
 }
 
-.btn-public.is-true {
+.btn-private {
+  all: unset;
+  background-color: $color-quarternary;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  cursor: pointer;
+}
+
+.btn-public.is-public {
   background: $color-primary;
 }
 
-.btn-private.is-true {
-  background-color: $color-primary;
+.btn-private.is-private {
+  background: $color-primary;
 }
 
 .element-description label {
@@ -103,4 +117,9 @@ hr {
   color: white;
   background: $color-quinary;
   border-radius: 3px;
+}
+
+.text-error span {
+  font-size: smaller;
+  color: $text-error-color;
 }

@@ -19,5 +19,20 @@ export interface Manga {
   coverUrl: string;
   synopsis: string;
   status: string;
-  genres: []
+  genres: [];
+}
+
+export interface MangaListCreateFormModel {
+  title: string;
+  description: string;
+  isPublic: boolean;
+  mangas: MangaListCreate[];
+}
+
+
+export interface MangaListCreate {
+  jikanId: number;
+  title: string;
+  coverUrl: string;
+  synopsis: string;
 }

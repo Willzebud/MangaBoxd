@@ -36,14 +36,14 @@ export class Register {
     required(path.email, { message: 'Email is required' });
     email(path.email, { message: 'Enter a valid email adress' });
 
-    required(path.firstname!, { message: 'Pseudo is required' });
+    required(path.firstname!, { message: 'Firstname is required' });
     required(path.lastname!, { message: 'Lastname required'});
 
     required(path.password, { message: 'Password is required' });
     pattern(path.password, this.passwordRegex, {
       message:
         'The password must contain an uppercase and lowercase letter, a special character, and be at least 8 characters long.',
-    });
+    })
   });
 
   public onSubmitRegister(): void {
@@ -55,10 +55,9 @@ export class Register {
         alert('User register success');
         this.isSubmitting.set(false);
         this.router.navigate(['/login']);
-        console.log("TEST", response)
       },
       error: () => {
-        this.errorMessage.set('Échec de la connexion');
+        this.errorMessage.set('Login failed');
         this.isSubmitting.set(false);
       },
     });

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { Manga, MangaList } from '../models/manga-models';
+import { Manga, MangaList, MangaListCreateFormModel } from '../models/manga-models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,5 +18,9 @@ export class MangaService {
 
   getMangas(search: string): Observable<Manga[]> {
     return this.http.get<Manga[]>(`${this.jsonServerUrl}/jikan/mangas?title=${search}`);
+  }
+
+  postMangaList(mangalist: MangaListCreateFormModel): Observable<MangaListCreateFormModel> {
+    return this.http.post<MangaListCreateFormModel>(`${this.jsonServerUrl}/manga-lists`, mangalist)
   }
 }
