@@ -17,10 +17,9 @@ import { FieldState, FieldTree, form } from '@angular/forms/signals';
 export class SearchMangaForm {
   private readonly mangaService = inject(MangaService);
   public readonly searchInput = signal<string>('');
-  public readonly selectedMangas = signal<Manga[]>([]);
-  public readonly isClicked = signal(false)
+  public readonly isClicked = signal(false);
   public onSubmit: OutputEmitterRef<void> = output();
-  public mangaFormField = input.required<FieldState<MangaListCreate[], string>>()
+  public mangaFormField = input.required<FieldState<MangaListCreate[], string>>();
 
   public readonly mangaData = toSignal(
     toObservable(this.searchInput).pipe(
@@ -31,34 +30,33 @@ export class SearchMangaForm {
   );
 
   public onSearchUpdated(text: string): void {
-    this.isClicked.set(false)
+    this.isClicked.set(false);
     this.searchInput.set(text);
   }
 
   public onClickAddManga(manga: MangaListCreate): void {
-
-    this.isClicked.set(true)
+    this.isClicked.set(true);
     const data: MangaListCreate = {
       jikanId: manga.jikanId,
       title: manga.title,
       coverUrl: manga.coverUrl,
       synopsis: manga.synopsis,
-    }
-    this.mangaFormField().value.set([data])
+    };
+    this.mangaFormField().value.update((value) => [...value, data]);
     this.searchInput.set('');
   }
 
   public deleteMangaFromList(mangaId: number): void {
-    this.selectedMangas.update((mangaArray) =>
+    this.mangaFormField().value.update((mangaArray) =>
       mangaArray.filter((manga) => manga.jikanId !== mangaId),
     );
   }
 
   public isMangaAlreadyAdded(mangaId: number): boolean {
-    return this.selectedMangas().some((manga) => manga.jikanId === mangaId);
+    return this.mangaFormField().value().some((manga) => manga.jikanId === mangaId);
   }
 
   public onClickSubmitMangaList(): void {
-    this.onSubmit.emit()
+    this.onSubmit.emit();
   }
 }
