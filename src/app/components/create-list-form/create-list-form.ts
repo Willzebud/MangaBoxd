@@ -58,7 +58,7 @@ export class CreateListForm {
   }
 
   public handleClickSubmitMangaList(): void {
-    if(this.mangaListModel().title.length === 0 && this.mangaListModel().mangas.length === 0){
+    if(!this.mangaListModel().title.trim() || this.mangaListModel().mangas.length === 0){
       alert("A list must include at least one title and one film")
       return
     }

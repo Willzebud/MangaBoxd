@@ -229,6 +229,18 @@ li.manga-added {
 }
 
 @media screen and (min-width: 320px) {
+  .span-manga-title {
+  font-size: 12px;
+}
+
+.span-manga-genre {
+  font-size: 10px;
+}
+
+.icon-delete {
+  padding: 4%;
+}
+
   .btn-cancel {
     padding: 5px 15px;
   }
@@ -277,6 +289,18 @@ li.manga-added {
 }
 
 @media screen and (min-width: 768px) {
+  .span-manga-title {
+  font-size: 22px;
+}
+
+.span-manga-genre {
+  font-size: small;
+}
+
+.icon-delete {
+  padding: 2%;
+}
+
   .btn-cancel {
     padding: 5px 15px;
   }
