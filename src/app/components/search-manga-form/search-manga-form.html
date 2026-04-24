@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="btn-group">
-      <button class="btn-cancel">Cancel</button>
+      <button class="btn-cancel" (click)="onCLickCancel()">Cancel</button>
       <button class="btn-save" (click)="onClickSubmitMangaList()">Save</button>
     </div>
   </div>
@@ -48,7 +48,7 @@
             <img [src]="manga.coverUrl" />
             <div class="div-manga-element-text">
               <span class="span-manga-title">{{ manga.title | slice: 0 : 30 }}</span>
-              
+              <span class="span-manga-genre">{{ manga.synopsis}}</span>
             </div>
           </div>
           <app-svg-icons

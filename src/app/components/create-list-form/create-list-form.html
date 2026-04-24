@@ -19,17 +19,17 @@
           <label>Who can view</label>
           <div class="btn-group">
             <button class="btn-public" (click)="onClickPublic()" [class.is-public]="isListPublic()">Public</button>
-            <button class="btn-private" (click)="onClickPrivate()" [class.is-private]="isListPublic() === false">Private</button>
+            <button class="btn-private" (click)="onClickPublic()" [class.is-private]="isListPublic() === false">Private</button>
           </div>
         </div>
       </div>
       <div class="right-create-group">
         <div class="element-description">
           <label>Description</label>
-          <textarea></textarea>
+          <textarea [formField]="createListForm.description" placeholder="List description..."></textarea>
         </div>
       </div>
     </div>
   </div>
-  <app-search-manga-form (onSubmit)="onSubmitMangaList()" [mangaFormField]="createListForm.mangas()"></app-search-manga-form>
+  <app-search-manga-form (onSubmit)="handleClickSubmitMangaList()" [mangaFormField]="createListForm.mangas()"></app-search-manga-form>
 </div>

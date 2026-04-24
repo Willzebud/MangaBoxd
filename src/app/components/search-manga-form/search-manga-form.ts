@@ -7,6 +7,7 @@ import { Manga, MangaListCreate } from '../../core/models/manga-models';
 import { SvgIcons } from '../svg-icons/svg-icons';
 import { SlicePipe } from '@angular/common';
 import { FieldState, FieldTree, form } from '@angular/forms/signals';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-manga-form',
@@ -15,11 +16,13 @@ import { FieldState, FieldTree, form } from '@angular/forms/signals';
   styleUrl: './search-manga-form.scss',
 })
 export class SearchMangaForm {
-  private readonly mangaService = inject(MangaService);
   public readonly searchInput = signal<string>('');
   public readonly isClicked = signal(false);
   public onSubmit: OutputEmitterRef<void> = output();
   public mangaFormField = input.required<FieldState<MangaListCreate[], string>>();
+
+  private readonly mangaService = inject(MangaService);
+  private readonly router = inject(Router);
 
   public readonly mangaData = toSignal(
     toObservable(this.searchInput).pipe(
@@ -54,6 +57,10 @@ export class SearchMangaForm {
 
   public isMangaAlreadyAdded(mangaId: number): boolean {
     return this.mangaFormField().value().some((manga) => manga.jikanId === mangaId);
+  }
+
+  public onCLickCancel(): void {
+    this.router.navigate(['/homelist']);
   }
 
   public onClickSubmitMangaList(): void {

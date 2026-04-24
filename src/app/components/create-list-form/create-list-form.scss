@@ -3,7 +3,7 @@ $color-primary: #ff8001;
 $color-secondary: #00e054;
 $color-tertiary: #40bcf4;
 $color-quarternary: #455466;
-$color-quinary: #2C3440;
+$color-quinary: #2c3440;
 
 * {
   color: white;
@@ -76,6 +76,8 @@ hr {
 
 .btn-public {
   all: unset;
+  font-size: 12px;
+  font-weight: bolder;
   background-color: $color-quarternary;
   border-radius: 4px;
   padding: 10px;
@@ -88,6 +90,8 @@ hr {
 
 .btn-private {
   all: unset;
+  font-size: 12px;
+  font-weight: bolder;
   background-color: $color-quarternary;
   border-radius: 4px;
   padding: 10px;
@@ -123,3 +127,81 @@ hr {
   font-size: smaller;
   color: $text-error-color;
 }
+
+@media screen and (min-width: 320px) {
+  .create-list-component {
+    margin: 0 20px;
+    gap: 40px;
+  }
+
+  .create-list-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .element-description textarea {
+  height: 140px;
+}
+}
+
+@media screen and (min-width: 420px) {
+  .create-list-component {
+    margin: 0 80px;
+    gap: 40px;
+  }
+
+  .create-list-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .element-description textarea {
+  height: 140px;
+}
+}
+
+@media screen and (min-width: 768px) {
+  .create-list-component {
+    margin: 0 120px;
+    gap: 40px;
+  }
+
+  .create-list-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  height: 40%;
+}
+}
+
+@media screen and (min-width: 1024px) {
+  .create-list-component {
+    margin: 0 180px;
+    gap: 40px;
+  }
+
+  .create-list-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  height: 40%;
+}
+}
+
+@media screen and (min-width: 1224px) {
+  .create-list-component {
+    margin: 0 380px;
+    gap: 40px;
+  }
+
+  .create-list-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  height: 40%;
+}
+}
+
+
