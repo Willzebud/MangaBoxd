@@ -1,10 +1,11 @@
 $color-quarternary: #455466;
 
-div {
-    position: fixed;
+footer {
     height: 50px;
     background-color: $color-quarternary;
     bottom: 0;
+    right: 0;
     width: 100%;
     z-index: 10;
+    position: fixed;
 }

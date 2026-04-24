@@ -31,7 +31,10 @@ export class CreateListForm {
     required(path.title, { message: 'List title is required' });
   });
 
+  
   public onClickPublic() {
+    this.createListForm.isPublic().value.set(!this.createListForm.isPublic().value())
+    console.log("TEST", this.createListForm.isPublic().value())
     this.isListPublic.update((value) => !value);
   }
 
@@ -39,16 +42,17 @@ export class CreateListForm {
     this.errorMessage.set(null);
     this.isSubmitting.set(true);
 
-    const dataOfMangaListModel = {
+    /*const dataOfMangaListModel = {
       ...this.mangaListModel(),
       isPublic: this.isListPublic(),
-    };
+    };*/
 
-    this.mangaService.postMangaList(dataOfMangaListModel).subscribe({
+    this.mangaService.postMangaList(this.createListForm().value()).subscribe({
       next: (response) => {
         alert('mangalist added successfully');
         this.isSubmitting.set(false);
         this.router.navigate(['/homelist']);
+        console.log(response)
       },
       error: () => {
         this.errorMessage.set('Adding manga list failed');

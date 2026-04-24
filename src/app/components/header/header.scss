@@ -191,7 +191,7 @@ a {
   font-size: 12px;
 }
 
-@media (max-width: 460px) {
+@media screen and (max-width: 460px) {
   .header-component nav {
     display: none;
   }
