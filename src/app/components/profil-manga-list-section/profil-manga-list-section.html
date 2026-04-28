@@ -9,8 +9,10 @@
           <div class="text-section">
             <div class="title-section">
               <h2 class="h2-list-title">{{ list.title }}</h2>
+              <div class="btn-group">
               <button class="btn-update">Update</button>
               <button (click)="onClickListDelete(list.id)" class="btn-delete">Delete</button>
+              </div>
             </div>
             @if (list.isPublic) {
               <div class="div-public-group">

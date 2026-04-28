@@ -104,6 +104,11 @@ span {
   align-items: center;
 }
 
+.btn-group {
+  display: flex;
+  gap: 20px;
+}
+
 .btn-update {
   all: unset;
   background-color: #00e054;
@@ -129,25 +134,25 @@ span {
 }
 
 .div-public-group {
-    display: flex;
-    align-items: end;
-    gap: 5px;
+  display: flex;
+  align-items: end;
+  gap: 5px;
 }
 
 .div-public-group span {
-    font-weight: bold;
-    color: $color-tertiary;
+  font-weight: bold;
+  color: $color-tertiary;
 }
 
 .div-private-group span {
-    font-weight: bold;
-    color: $color-tertiary;
+  font-weight: bold;
+  color: $color-tertiary;
 }
 
 .div-private-group {
-    display: flex;
-    align-items: end;
-    gap: 5px;
+  display: flex;
+  align-items: end;
+  gap: 5px;
 }
 
 .icon {
@@ -164,4 +169,62 @@ span {
   overflow: hidden;
   text-overflow: ellipsis;
   line-break: anywhere;
+}
+
+@media screen and (min-width: 320px) {
+  .manga-element {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title-section {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0px;
+    margin-bottom: 20px;
+  }
+
+  .btn-update {
+    height: 15px;
+    font-size: smaller;
+  }
+
+  .btn-delete {
+    height: 15px;
+    font-size: smaller;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .manga-element {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .title-section {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 0px;
+  }
+
+  .btn-update {
+    height: 20px;
+    font-size: medium;
+  }
+
+  .btn-delete {
+    height: 20px;
+    font-size: medium;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
 }
