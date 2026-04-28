@@ -20,8 +20,12 @@ export interface AuthModel {
 }
 
 export interface LoginResponse {
-  userId: number;
-  emailId: string;
   accessToken: string;
-  refreshToken: string;
+  user: {
+    id: string;
+    email: string;
+    firstname: string;
+    lastname: string;
+    role: string;
+  };
 }

@@ -34,7 +34,6 @@ export class CreateListForm {
   
   public onClickPublic() {
     this.createListForm.isPublic().value.set(!this.createListForm.isPublic().value())
-    console.log("TEST", this.createListForm.isPublic().value())
     this.isListPublic.update((value) => !value);
   }
 

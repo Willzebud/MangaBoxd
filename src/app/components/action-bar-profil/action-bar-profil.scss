@@ -1,0 +1,30 @@
+$text-error-color: #ffdd02;
+$color-primary: #ff8001;
+$color-secondary: #00e054;
+$color-tertiary: #40bcf4;
+$color-quarternary: #455466;
+$color-quinary: #2c3440;
+
+.div-action-bar-profil-group {
+    width: 80%;
+    background-color: #455466;
+    height: 60px;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    border-radius: 10px;
+}
+
+.div-profil-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    gap: 10px;
+}
+
+.user-name {
+    font-size: larger;
+    font-weight: bolder;
+    color: $color-tertiary;
+}

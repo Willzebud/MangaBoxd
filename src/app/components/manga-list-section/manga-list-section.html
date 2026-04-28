@@ -1,18 +1,20 @@
 <div class="manga-group">
-  @for (mangaList of mangaLists(); track mangaList.id) {
-    <div class="manga-element">
-      <app-manga-cover-list [dataArray]="mangaList.mangas" />
-      <div class="text-section">
-        <h2 class="title-section">{{ mangaList.title }}</h2>
-        <p>
-          {{ mangaList.description }}
-        </p>
-        <div class="info-section">
-          <span>{{ mangaList.owner.firstname }}</span>
-          <span>{{ mangaList.createdAt }} mangas</span>
-          
+  @for (manga of mangaLists(); track manga.id) {
+    @if (manga.isPublic) {
+      <div class="manga-element">
+        <app-manga-cover-list [dataArray]="manga.mangas" />
+        <div class="text-section">
+          <h2 class="title-section">{{ manga.title }}</h2>
+          <p>
+            {{ manga.description }}
+          </p>
+          <div class="info-section">
+            <span>{{ manga.owner.firstname }}</span>
+            <span>{{ manga.createdAt | date : 'mediumDate'}}</span>
+            <span>{{manga.mangas.length}} manga</span>
+          </div>
         </div>
       </div>
-    </div>
+    }
   }
 </div>

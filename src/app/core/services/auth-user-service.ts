@@ -12,6 +12,19 @@ export class AuthUserService {
   private http = inject(HttpClient);
 
   private readonly TOKEN_KEY = 'accessToken';
+  private readonly USER_NAME = 'userName'
+
+  public setUserName(name: string): void {
+    localStorage.setItem(this.USER_NAME, name);
+  }
+
+  public getUserName(): string | null {
+   return localStorage.getItem(this.USER_NAME);
+  }
+
+  public removeUserName(): void {
+    localStorage.removeItem(this.USER_NAME);
+  }
 
   public setToken(token: string): void {
     localStorage.setItem(this.TOKEN_KEY, token);
@@ -33,6 +46,7 @@ export class AuthUserService {
     return this.http.post<LoginResponse>(`${this.authApiUrl}/login`, user).pipe(
       tap((res) => {
         this.setToken(res.accessToken);
+        this.setUserName(res.user.firstname);
       }),
     );
   }

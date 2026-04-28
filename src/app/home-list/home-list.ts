@@ -15,6 +15,7 @@ export class HomeList {
   private readonly authService = inject(AuthUserService);
 
   onLogOut() {
+    this.authService.removeUserName();
     this.authService.removeToken();
     this.router.navigate(['/login']);
   }
