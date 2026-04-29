@@ -3,10 +3,10 @@ import { debounceTime, switchMap } from 'rxjs';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { MangaService } from '../../core/services/manga-service';
 import { of } from 'rxjs';
-import { Manga, MangaListCreate } from '../../core/models/manga-models';
+import { MangaListCreate } from '../../core/models/manga-models';
 import { SvgIcons } from '../svg-icons/svg-icons';
 import { SlicePipe } from '@angular/common';
-import { FieldState, FieldTree, form } from '@angular/forms/signals';
+import { FieldState } from '@angular/forms/signals';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,6 +20,7 @@ export class SearchMangaForm {
   public readonly isClicked = signal(false);
   public onSubmit: OutputEmitterRef<void> = output();
   public mangaFormField = input.required<FieldState<MangaListCreate[], string>>();
+  public btnTxt = input.required<string>()
 
   private readonly mangaService = inject(MangaService);
   private readonly router = inject(Router);

@@ -1,10 +1,9 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MangaService } from '../../core/services/manga-service';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { DatePipe } from '@angular/common';
 import { MangaCoverList } from '../manga-cover-list/manga-cover-list';
-import { AuthUserService } from '../../core/services/auth-user-service';
 import { SvgIcons } from '../svg-icons/svg-icons';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { SortAndFilterControls } from '../sort-and-filter-controls/sort-and-filter-controls';
@@ -68,6 +67,10 @@ export class ProfilMangaListSection {
 
   public onClickCreateList(): void {
     this.router.navigate(['/createlist']);
+  }
+
+  public onClickUpdateList(): void {
+    this.router.navigate(['/updatelist']);
   }
 
   public onClickListDelete(listId: string): void {

@@ -20,6 +20,10 @@ export const mainRoute: Routes = [
         loadComponent: () => import('../create-list/create-list').then((m) => m.CreateList)
       },
       {
+        path: 'updatelist',
+        loadComponent: () => import('../update-list/update-list').then((m) => m.UpdateList)
+      },
+      {
         path: '**',
         redirectTo: 'homelist'
       }

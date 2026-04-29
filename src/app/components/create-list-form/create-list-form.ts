@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { SearchMangaForm } from '../search-manga-form/search-manga-form';
 import { Router } from '@angular/router';
 import { MangaService } from '../../core/services/manga-service';
@@ -17,6 +17,7 @@ export class CreateListForm {
   public description = signal<string>('');
   private readonly router = inject(Router);
   private readonly mangaService = inject(MangaService);
+  public btnText = input.required<string>()
 
   private readonly mangaListModel = signal<MangaListCreateFormModel>({
     title: '',
