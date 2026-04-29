@@ -1,19 +1,25 @@
 <div class="div-manga-list-group">
-  <span class="span-your-lists">Your Lists</span>
+  <div class="div-title-and-filter-group">
+    <span class="span-your-lists">Your Lists</span>
+    <app-sort-and-filter-controls
+      [isFilterActive]="listPublicOrPrivate()"
+      [isSortedActive]="listSortedByDate()"
+      (changeFilter)="onClickFilter()"
+      (changeSorter)="onClickSorted()"
+      (changeReset)="onClickReset()"
+    ></app-sort-and-filter-controls>
+  </div>
   <hr class="hr" />
-  @if (mangaLists()?.length) {
+  @if (mangaLists().length) {
     <div class="manga-group">
-      @for (list of mangaLists(); track list.id) {
+      @for (list of mangaListFilter(); track list.id) {
         <div class="manga-element">
           <app-manga-cover-list [dataArray]="list.mangas" />
           <div class="text-section">
             <div class="title-section">
               <h2 class="h2-list-title">{{ list.title }}</h2>
-              <div class="btn-group">
-              <button class="btn-update">Update</button>
-              <button (click)="onClickListDelete(list.id)" class="btn-delete">Delete</button>
-              </div>
             </div>
+            <div class="action-element-group">
             @if (list.isPublic) {
               <div class="div-public-group">
                 <app-svg-icons class="icon" [path]="'/assets/icons/locker-open-svgrepo-com.svg'" />
@@ -28,6 +34,11 @@
                 <span>Private</span>
               </div>
             }
+            <div class="btn-group">
+                <button class="btn-update">Update</button>
+                <button (click)="onClickListDelete(list.id)" class="btn-delete">Delete</button>
+              </div>
+            </div>
             <p class="p-list-description">
               {{ list.description }}
             </p>

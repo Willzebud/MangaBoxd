@@ -12,6 +12,12 @@ $color-white: #fff;
   align-self: center;
 }
 
+.div-title-and-filter-group {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+}
+
 .span-your-lists {
   color: $color-white;
   font-size: x-large;
@@ -171,6 +177,12 @@ span {
   line-break: anywhere;
 }
 
+.action-element-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 @media screen and (min-width: 320px) {
   .manga-element {
     display: flex;
@@ -183,6 +195,10 @@ span {
     flex-direction: column;
     gap: 0px;
     margin-bottom: 20px;
+  }
+
+  .btn-group {
+    gap: 12px;
   }
 
   .btn-update {
@@ -200,7 +216,7 @@ span {
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1145px) {
   .manga-element {
     display: flex;
     flex-direction: row;
@@ -214,13 +230,17 @@ span {
     margin-bottom: 0px;
   }
 
+  .btn-group {
+    gap: 20px;
+  }
+
   .btn-update {
-    height: 20px;
+    height: 16px;
     font-size: medium;
   }
 
   .btn-delete {
-    height: 20px;
+    height: 16px;
     font-size: medium;
   }
 

@@ -1,0 +1,25 @@
+<div class="filter-and-sort-group">
+  <div (click)="onClickSorted()" class="sort-by-date-group">
+    <span>Date</span>
+    <app-svg-icons
+      class="icon"
+      [path]="
+        isSortedActive()
+          ? '/assets/icons/arrow-down-svgrepo-com.svg'
+          : '/assets/icons/arrow-up-svgrepo-com.svg'
+      "
+    />
+  </div>
+  <div (click)="onClickFilter()" class="filter-by-public-private-group">
+    <span>{{ isFilterActive() ? 'Public' : 'Private' }}</span>
+    <app-svg-icons
+      class="icon"
+      [path]="
+        isFilterActive()
+          ? '/assets/icons/arrow-up-svgrepo-com.svg'
+          : '/assets/icons/arrow-down-svgrepo-com.svg'
+      "
+    />
+  </div>
+  <button (click)="onClickReset()" class="btn-reset">Reset</button>
+</div>

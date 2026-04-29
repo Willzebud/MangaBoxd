@@ -1,0 +1,57 @@
+$color-primary: #ff8001;
+$color-secondary: #00e054;
+$color-tertiary: #40bcf4;
+$color-quarternary: #455466;
+$color-quinary: #2c3440;
+$color-white: #fff;
+
+.filter-and-sort-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.sort-by-date-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.sort-by-date-group span {
+    color: $color-white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sort-by-date-group .icon {
+    width: 25px;
+    height: 25px;
+    background-color: $color-white;
+}
+
+.filter-by-public-private-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.filter-by-public-private-group span {
+    color: $color-white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filter-by-public-private-group .icon {
+    width: 25px;
+    height: 25px;
+    background-color: $color-white;
+}
+
+.btn-reset {
+    all: unset;
+    padding: 6px 8px;
+    border-radius: 10px;
+    background-color: #455466;
+    color: #fff;
+    cursor: pointer;
+}
