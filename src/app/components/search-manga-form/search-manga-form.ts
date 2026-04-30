@@ -21,6 +21,7 @@ export class SearchMangaForm {
   public onSubmit: OutputEmitterRef<void> = output();
   public mangaFormField = input.required<FieldState<MangaListCreate[], string>>();
   public btnTxt = input.required<string>()
+  
 
   private readonly mangaService = inject(MangaService);
   private readonly router = inject(Router);

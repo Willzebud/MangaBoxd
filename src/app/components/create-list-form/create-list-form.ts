@@ -1,8 +1,11 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { SearchMangaForm } from '../search-manga-form/search-manga-form';
 import { Router } from '@angular/router';
 import { MangaService } from '../../core/services/manga-service';
-import { Manga, MangaListCreate, MangaListCreateFormModel } from '../../core/models/manga-models';
+import {
+  MangaList,
+  MangaListCreateFormModel,
+} from '../../core/models/manga-models';
 import { form, required, FormField } from '@angular/forms/signals';
 
 @Component({
@@ -17,7 +20,21 @@ export class CreateListForm {
   public description = signal<string>('');
   private readonly router = inject(Router);
   private readonly mangaService = inject(MangaService);
-  public btnText = input.required<string>()
+  public btnText = input.required<string>();
+  public mangaList = input<MangaList>();
+
+  constructor() {
+    effect(() => {
+      const manga = this.mangaList();
+      if (manga) {
+        this.createListForm.title().value.set(manga.title);
+        this.createListForm.mangas().value.set(manga.mangas);
+        this.createListForm.description().value.set(manga.description);
+        this.createListForm.isPublic().value.set(manga.isPublic);
+        this.isListPublic.set(manga.isPublic);
+      }
+    });
+  }
 
   private readonly mangaListModel = signal<MangaListCreateFormModel>({
     title: '',
@@ -32,9 +49,8 @@ export class CreateListForm {
     required(path.title, { message: 'List title is required' });
   });
 
-  
   public onClickPublic() {
-    this.createListForm.isPublic().value.set(!this.createListForm.isPublic().value())
+    this.createListForm.isPublic().value.set(!this.createListForm.isPublic().value());
     this.isListPublic.update((value) => !value);
   }
 
@@ -42,29 +58,43 @@ export class CreateListForm {
     this.errorMessage.set(null);
     this.isSubmitting.set(true);
 
-    /*const dataOfMangaListModel = {
-      ...this.mangaListModel(),
-      isPublic: this.isListPublic(),
-    };*/
-
-    this.mangaService.postMangaList(this.createListForm().value()).subscribe({
-      next: (response) => {
-        alert('mangalist added successfully');
-        this.isSubmitting.set(false);
-        this.router.navigate(['/homelist']);
-        console.log(response)
-      },
-      error: () => {
-        this.errorMessage.set('Adding manga list failed');
-        this.isSubmitting.set(false);
-      },
-    });
+    if (this.mangaList()) {
+      const { mangas, ...form} = this.createListForm().value()
+      const updatedMangas = mangas.map(m => {
+        const { addedAt, ...updatedManga } = m;
+        return updatedManga
+      })
+      this.mangaService.updateMangaList(this.mangaList()!.id, { mangas: updatedMangas, ...form}).subscribe({
+        next: (response) => {
+          alert('mangalist updated successfully');
+          this.isSubmitting.set(false);
+          this.router.navigate(['/homelist']);
+          console.log(response);
+        },
+        error: () => {
+          this.errorMessage.set('Update manga list failed');
+          this.isSubmitting.set(false);
+        },
+      })
+    } else {
+      this.mangaService.postMangaList(this.createListForm().value()).subscribe({
+        next: (response) => {
+          alert('mangalist added successfully');
+          this.isSubmitting.set(false);
+          this.router.navigate(['/homelist']);
+        },
+        error: () => {
+          this.errorMessage.set('Adding manga list failed');
+          this.isSubmitting.set(false);
+        },
+      });
+    }
   }
 
   public handleClickSubmitMangaList(): void {
-    if(!this.mangaListModel().title.trim() || this.mangaListModel().mangas.length === 0){
-      alert("A list must include at least one title and one film")
-      return
+    if (!this.mangaListModel().title.trim() || this.mangaListModel().mangas.length === 0) {
+      alert('A list must include at least one title and one film');
+      return;
     }
     this.onSubmitMangaList();
   }

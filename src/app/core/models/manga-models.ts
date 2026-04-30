@@ -29,10 +29,16 @@ export interface MangaListCreateFormModel {
   mangas: MangaListCreate[];
 }
 
+export interface UpdateMangaListModel {
+  title: string;
+  description: string;
+  isPublic: boolean;
+}
 
 export interface MangaListCreate {
   jikanId: number;
   title: string;
   coverUrl: string;
   synopsis: string;
+  addedAt?: string;
 }

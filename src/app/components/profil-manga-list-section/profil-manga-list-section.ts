@@ -69,8 +69,8 @@ export class ProfilMangaListSection {
     this.router.navigate(['/createlist']);
   }
 
-  public onClickUpdateList(): void {
-    this.router.navigate(['/updatelist']);
+  public onClickUpdateList(listId: string): void {
+    this.router.navigate([`/updatelist`, listId]);
   }
 
   public onClickListDelete(listId: string): void {

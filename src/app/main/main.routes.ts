@@ -20,7 +20,7 @@ export const mainRoute: Routes = [
         loadComponent: () => import('../create-list/create-list').then((m) => m.CreateList)
       },
       {
-        path: 'updatelist',
+        path: 'updatelist/:id',
         loadComponent: () => import('../update-list/update-list').then((m) => m.UpdateList)
       },
       {
