@@ -12,5 +12,5 @@ import { AuthUserService } from '../core/services/auth-user-service';
 })
 export class UserProfil {
   private readonly authService = inject(AuthUserService);
-  public readonly userName = this.authService.getUserName();
+  //public readonly userName = this.authService.getUserName();
 }

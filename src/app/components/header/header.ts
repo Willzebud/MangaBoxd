@@ -3,6 +3,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthUserService } from '../../core/services/auth-user-service';
 import { SvgIcons } from '../svg-icons/svg-icons';
 import { NgClass } from '@angular/common';
+import { AuthStore } from '../../core/stores/auth/auth.store';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ import { NgClass } from '@angular/common';
 })
 export class Header {
   private readonly router = inject(Router);
-  private readonly authService = inject(AuthUserService);
+  private readonly authStore = inject(AuthStore)
   public isActive = false;
 
   public toggleMenu() {
@@ -20,7 +21,9 @@ export class Header {
   }
 
   public onLogOut() {
-    this.authService.removeToken();
-    this.router.navigate(['/login']);
+    //this.authService.removeToken();
+    this.authStore.logout()
+
+    //this.router.navigate(['/login']);
   }
 }

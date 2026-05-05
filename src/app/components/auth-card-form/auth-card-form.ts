@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { FieldTree, FormField } from '@angular/forms/signals';
 import { AuthModel } from '../../core/models/auth-user-models';
+import { AuthStore } from '../../core/stores/auth/auth.store';
 
 @Component({
   selector: 'app-auth-card-form',
@@ -28,6 +29,7 @@ export class AuthCardForm {
   public authForm = input.required<FieldTree<AuthModel>>();
 
   private readonly router = inject(Router);
+  public readonly authStore = inject(AuthStore)
 
   public readonly isRegisterScreen = computed<boolean>(() => this.currentType() === 'Register');
 

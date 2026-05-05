@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { LoginResponse, UserLogin, UserRegister } from '../models/auth-user-models';
+import { AuthModel, LoginResponse, UserLogin } from '../models/auth-user-models';
 import { Observable, tap } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class AuthUserService {
   
   private http = inject(HttpClient);
 
-  private readonly TOKEN_KEY = 'accessToken';
+  /*private readonly TOKEN_KEY = 'accessToken';
   private readonly USER_NAME = 'userName'
 
   public setUserName(name: string): void {
@@ -40,14 +40,22 @@ export class AuthUserService {
 
   registerUser(user: UserRegister): Observable<UserRegister> {
     return this.http.post<UserRegister>(`${this.authApiUrl}/register`, user);
-  }
+  }*/
 
-  loginUser(user: UserLogin): Observable<LoginResponse> {
+  /*loginUser(user: UserLogin): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.authApiUrl}/login`, user).pipe(
       tap((res) => {
         this.setToken(res.accessToken);
         this.setUserName(res.user.firstname);
       }),
     );
-  }
+  }*/
+
+    registerUser(user: AuthModel) {
+      return this.http.post<AuthModel>(`${this.authApiUrl}/register`, user)
+    }
+
+    loginUser(user: UserLogin) {
+      return this.http.post<LoginResponse>(`${this.authApiUrl}/login`, user);
+    }
 }

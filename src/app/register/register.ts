@@ -4,6 +4,7 @@ import { AuthUserService } from '../core/services/auth-user-service';
 import { Router } from '@angular/router';
 import { AuthModel } from '../core/models/auth-user-models';
 import { email, form, minLength, pattern, required } from '@angular/forms/signals';
+import { AuthStore } from '../core/stores/auth/auth.store';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,10 @@ export class Register {
   public readonly isSubmitting = signal(false);
 
   private readonly router = inject(Router);
-  private readonly authService = inject(AuthUserService);
+  //private readonly authService = inject(AuthUserService);
+  private readonly authStore = inject(AuthStore);
+
+
 
   private readonly passwordRegex = signal(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&-])[A-Za-z\d@$!%*?&-]{8,}$/,
@@ -47,7 +51,9 @@ export class Register {
   });
 
   public onSubmitRegister(): void {
-    this.isSubmitting.set(true);
+
+    this.authStore.register(this.registerModel())
+    /*this.isSubmitting.set(true);
     this.errorMessage.set(null);
 
     this.authService.registerUser(this.registerModel()).subscribe({
@@ -60,6 +66,6 @@ export class Register {
         this.errorMessage.set('Login failed');
         this.isSubmitting.set(false);
       },
-    });
+    });*/
   }
 }

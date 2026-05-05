@@ -4,6 +4,7 @@ import { AuthCardForm } from '../components/auth-card-form/auth-card-form';
 import { AuthUserService } from '../core/services/auth-user-service';
 import { form, required } from '@angular/forms/signals';
 import { AuthModel } from '../core/models/auth-user-models';
+import { AuthStore } from '../core/stores/auth/auth.store';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { AuthModel } from '../core/models/auth-user-models';
 })
 export class Login {
   public readonly isSubmitting = signal(false);
+  private readonly authStore = inject(AuthStore)
 
   private readonly router = inject(Router);
   private readonly authService = inject(AuthUserService);
@@ -22,7 +24,7 @@ export class Login {
     password: '',
   });
 
-  private readonly errorMessage = signal<string | null>(null);
+  //private readonly errorMessage = signal<string | null>(null);
 
   public loginForm = form(this.loginModel, (path) => {
     required(path.email, { message: 'Email is required' });
@@ -34,10 +36,10 @@ export class Login {
   }
 
   public onSubmitLogin(): void {
-    this.isSubmitting.set(true);
-    this.errorMessage.set(null);
+    //this.isSubmitting.set(true);
+    //this.errorMessage.set(null);
 
-    this.authService.loginUser(this.loginModel()).subscribe({
+    /*this.authService.loginUser(this.loginModel()).subscribe({
       next: (response) => {
         alert('User login success');
         this.isSubmitting.set(false);
@@ -47,6 +49,11 @@ export class Login {
         this.errorMessage.set('Échec de la connexion');
         this.isSubmitting.set(false);
       },
-    });
+    });*/
+
+    this.authStore.login(this.loginModel())
+
+    console.log('TEST SUBMIT', this.authService.loginUser(this.loginModel()))
+    console.log('TEST LOGIN MODEL', this.loginModel())
   }
 }

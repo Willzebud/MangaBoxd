@@ -9,5 +9,5 @@ import { AuthUserService } from '../../core/services/auth-user-service';
   styleUrl: './action-bar-profil.scss',
 })
 export class ActionBarProfil {
-  public readonly userName = input.required<string>()
+  //public readonly userName = input.required<string>()
 }
