@@ -1,6 +1,14 @@
-import { Component, inject, input, output, OutputEmitterRef, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  output,
+  OutputEmitterRef,
+  signal,
+} from '@angular/core';
 import { debounceTime, switchMap } from 'rxjs';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { rxResource, toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { MangaService } from '../../core/services/manga-service';
 import { of } from 'rxjs';
 import { MangaListCreate } from '../../core/models/manga-models';
@@ -20,19 +28,23 @@ export class SearchMangaForm {
   public readonly isClicked = signal(false);
   public onSubmit: OutputEmitterRef<void> = output();
   public mangaFormField = input.required<FieldState<MangaListCreate[], string>>();
-  public btnTxt = input.required<string>()
-  
+  public btnTxt = input.required<string>();
 
   private readonly mangaService = inject(MangaService);
   private readonly router = inject(Router);
 
-  public readonly mangaData = toSignal(
+  /*public readonly mangaData = toSignal(
     toObservable(this.searchInput).pipe(
       debounceTime(800),
       switchMap((search) => (search.trim() ? this.mangaService.getMangas(search) : of([]))),
     ),
     { initialValue: [] },
-  );
+  );*/
+
+  public readonly mangaData = rxResource({
+    params: () => this.searchInput().trim(),
+    stream: ({ params }) => (params ? this.mangaService.getMangas(params) : of([])),
+  });
 
   public onSearchUpdated(text: string): void {
     this.isClicked.set(false);
@@ -58,7 +70,9 @@ export class SearchMangaForm {
   }
 
   public isMangaAlreadyAdded(mangaId: number): boolean {
-    return this.mangaFormField().value().some((manga) => manga.jikanId === mangaId);
+    return this.mangaFormField()
+      .value()
+      .some((manga) => manga.jikanId === mangaId);
   }
 
   public onCLickCancel(): void {

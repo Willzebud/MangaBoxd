@@ -12,10 +12,10 @@
           [value]="searchInput()"
           placeholder="Enter name of manga..."
         />
-        @if (mangaData().length) {
+        @if (mangaData.value()!.length) {
           <div class="search-manga-result" [class.disabled]="isClicked()">
             <ul>
-              @for (manga of mangaData(); track manga.jikanId) {
+              @for (manga of mangaData.value(); track manga.jikanId) {
                 <li
                   (click)="!isMangaAlreadyAdded(manga.jikanId) && onClickAddManga(manga)"
                   [class.manga-added]="isMangaAlreadyAdded(manga.jikanId)"

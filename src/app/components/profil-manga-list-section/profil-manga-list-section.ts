@@ -7,6 +7,7 @@ import { MangaCoverList } from '../manga-cover-list/manga-cover-list';
 import { SvgIcons } from '../svg-icons/svg-icons';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { SortAndFilterControls } from '../sort-and-filter-controls/sort-and-filter-controls';
+import { MangaListStore } from '../../core/stores/manga/manga.store';
 
 @Component({
   selector: 'app-profil-manga-list-section',
@@ -17,13 +18,22 @@ import { SortAndFilterControls } from '../sort-and-filter-controls/sort-and-filt
 export class ProfilMangaListSection {
   private readonly router = inject(Router);
 
-  private refreshList$ = new BehaviorSubject<void>(undefined);
+  //private refreshList$ = new BehaviorSubject<void>(undefined);
 
-  public mangaService = inject(MangaService);
-  private dataList$ = this.refreshList$.pipe(switchMap(() => this.mangaService.getMyMangaList()));
+  //private mangaService = inject(MangaService);
+  private mangaListStore = inject(MangaListStore)
+
+
+  /*private dataList$ = this.refreshList$.pipe(switchMap(() => this.mangaService.getMyMangaList()));
   public mangaLists = toSignal(this.dataList$, {
     initialValue: [],
-  });
+  });*/
+
+  public mangaLists = computed(() => this.mangaListStore.myMangaList());
+
+  constructor(){
+    this.mangaListStore.getMyMangaList()
+  }
 
   public listPublicOrPrivate = signal(true);
   public isMangaListFiltered = signal(false);
@@ -74,9 +84,10 @@ export class ProfilMangaListSection {
   }
 
   public onClickListDelete(listId: string): void {
-    this.mangaService.deleteMangaList(listId).subscribe(() => {
+    /*this.mangaService.deleteMangaList(listId).subscribe(() => {
       alert('List deleted');
-      this.refreshList$.next();
-    });
+      //this.refreshList$.next();
+    });*/
+    this.mangaListStore.deleteMangaList(listId)
   }
 }

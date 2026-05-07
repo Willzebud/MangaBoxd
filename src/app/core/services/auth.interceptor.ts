@@ -7,9 +7,8 @@ import {
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
-import { inject, signal } from '@angular/core';
-import { catchError, map, Observable, single, throwError } from 'rxjs';
-import { AuthUserService } from './auth-user-service';
+import { inject } from '@angular/core';
+import { catchError, Observable, throwError } from 'rxjs';
 import { AuthStore } from '../stores/auth/auth.store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -17,10 +16,8 @@ export function authInterceptor(
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> {
-  //const auth = inject(AuthUserService);
   const authStore = inject(AuthStore);
   const token = authStore.accessToken();
-  const snackBar = signal(MatSnackBar);
 
   if (!token) {
     return next(req);
@@ -41,10 +38,14 @@ export const responseTypeInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> => {
+  const snackBar = inject(MatSnackBar);
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       let message = '';
       switch (error.status) {
+        case 201:
+          message = 'Account created';
+          break;
         case 400:
           message = 'Bad request';
           break;
@@ -64,8 +65,15 @@ export const responseTypeInterceptor: HttpInterceptorFn = (
           message = 'An error has occurred';
       }
 
+      snackBar.open(message, 'Close', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top', 
+        panelClass: 'custom-style'
+      })
+
       return throwError(() => {
-        alert(message);
+        console.log(message)
       });
     }),
   );

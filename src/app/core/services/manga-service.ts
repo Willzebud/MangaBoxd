@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { Manga, MangaList, MangaListCreateFormModel, UpdateMangaListModel } from '../models/manga-models';
+import {
+  Manga,
+  MangaList,
+  MangaListCreateFormModel,
+  UpdateMangaListModel,
+} from '../models/manga-models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,31 +17,49 @@ export class MangaService {
 
   public mangaList = signal<string[]>([]);
 
-  getMangaList(): Observable<MangaList[]> {
+  getMangaList() {
+    return this.http.get<MangaList[]>(`${this.jsonServerUrl}/manga-lists`);
+  }
+
+  getMyMangaList() {
+    return this.http.get<MangaList[]>(`${this.jsonServerUrl}/manga-lists/my-lists`);
+  }
+
+  deleteMangaList(listId: string) {
+    return this.http.delete<void>(`${this.jsonServerUrl}/manga-lists/${listId}`);
+  }
+
+  getMangas(search: string) {
+    return this.http.get<Manga[]>(`${this.jsonServerUrl}/jikan/mangas?title=${search}`);
+  }
+
+  /*getMangaList(): Observable<MangaList[]> {
     return this.http.get<MangaList[]>(`${this.jsonServerUrl}/manga-lists`);
   }
 
   getMyMangaList(): Observable<MangaList[]> {
     return this.http.get<MangaList[]>(`${this.jsonServerUrl}/manga-lists/my-lists`)
   }
+    
+  deleteMangaList(listId: string): Observable<void>{
+    return this.http.delete<void>(`${this.jsonServerUrl}/manga-lists/${listId}`)
+  }
 
   getMangas(search: string): Observable<Manga[]> {
     return this.http.get<Manga[]>(`${this.jsonServerUrl}/jikan/mangas?title=${search}`);
   }
 
-  getMangaListById(listId: string): Observable<MangaList>{
-    return this.http.get<MangaList>(`${this.jsonServerUrl}/manga-lists/${listId}`)
+  */
+
+  getMangaListById(listId: string): Observable<MangaList> {
+    return this.http.get<MangaList>(`${this.jsonServerUrl}/manga-lists/${listId}`);
   }
 
   postMangaList(mangalist: MangaListCreateFormModel): Observable<MangaListCreateFormModel> {
-    return this.http.post<MangaListCreateFormModel>(`${this.jsonServerUrl}/manga-lists`, mangalist)
+    return this.http.post<MangaListCreateFormModel>(`${this.jsonServerUrl}/manga-lists`, mangalist);
   }
 
-  updateMangaList(listId: string, data: MangaListCreateFormModel): Observable<MangaList>{
-    return this.http.patch<MangaList>(`${this.jsonServerUrl}/manga-lists/${listId}`, data)
-  }
-
-  deleteMangaList(listId: string): Observable<void>{
-    return this.http.delete<void>(`${this.jsonServerUrl}/manga-lists/${listId}`)
+  updateMangaList(listId: string, data: MangaListCreateFormModel): Observable<MangaList> {
+    return this.http.patch<MangaList>(`${this.jsonServerUrl}/manga-lists/${listId}`, data);
   }
 }

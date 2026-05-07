@@ -6,9 +6,10 @@ import { AuthUserService } from '../../services/auth-user-service';
 import { debounceTime, distinctUntilChanged, firstValueFrom, pipe, switchMap, tap } from 'rxjs';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { tapResponse } from '@ngrx/operators';
-import { withStorageSync } from '@angular-architects/ngrx-toolkit';
+import { withDevtools, withStorageSync } from '@angular-architects/ngrx-toolkit';
+import { Login } from '../../../login/login';
 
-const TOKEN_KEY = 'accessToken';
+
 const STORAGE_SYNC_KEY = 'user';
 
 type LoginUserState = {
@@ -26,10 +27,8 @@ const loginInitialState: LoginUserState = {
 export const AuthStore = signalStore(
   { providedIn: 'root' },
   withState(loginInitialState),
-  withStorageSync({
-    key: STORAGE_SYNC_KEY,
-    select: ({ accessToken }) => ({ accessToken }),
-  }),
+  withDevtools(STORAGE_SYNC_KEY),
+  withStorageSync(STORAGE_SYNC_KEY),
 
   /*withComputed((store) => ({
     token: computed(() => store.accessToken()),
@@ -49,8 +48,7 @@ export const AuthStore = signalStore(
           loading: false,
         });
 
-        
-        //localStorage.setItem(USER_NAME, log.user.firstname);
+        localStorage.setItem(USER_NAME, log.user.firstname);
 
         router.navigate(['/homelist']);
 
@@ -68,21 +66,14 @@ export const AuthStore = signalStore(
         tap(() => patchState(store, { loading: true })),
         switchMap((userLogin) => {
           return authService.loginUser(userLogin).pipe(
-            tapResponse({
-              next: (data) => {
-                patchState(store, {
+            tap((data) => {
+              patchState(store, {
                   accessToken: data.accessToken,
                   user: data.user,
                   loading: false,
                 });
                 //localStorage.setItem(TOKEN_KEY, data.accessToken);
                 router.navigate(['/homelist']);
-              },
-
-              error: (err) => {
-                patchState(store, { loading: false });
-                console.log(err);
-              },
             }),
           );
         }),

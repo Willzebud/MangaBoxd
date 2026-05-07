@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { MangaCoverList } from "../manga-cover-list/manga-cover-list";
 import { MangaService } from '../../core/services/manga-service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DatePipe } from '@angular/common';
+import { MangaListStore } from '../../core/stores/manga/manga.store';
 
 @Component({
   selector: 'app-manga-list-section',
@@ -11,6 +12,12 @@ import { DatePipe } from '@angular/common';
   styleUrl: './manga-list-section.scss',
 })
 export class MangaListSection {
-  public mangaService = inject(MangaService)
-  public mangaLists = toSignal(this.mangaService.getMangaList())
+  //public mangaService = inject(MangaService)
+  private readonly mangaListStore = inject(MangaListStore)
+  public mangaLists = computed(() => this.mangaListStore.mangaList())
+
+  constructor() {
+    this.mangaListStore.getMangaList();
+  }
+
 }
