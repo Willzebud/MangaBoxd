@@ -1,8 +1,9 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
-import { CreateListForm } from "../components/create-list-form/create-list-form";
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { CreateListForm } from '../components/create-list-form/create-list-form';
+import { rxResource, toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { MangaService } from '../core/services/manga-service';
 import { switchMap } from 'rxjs';
+import { MangaListStore } from '../core/stores/manga/manga.store';
 
 @Component({
   selector: 'app-update-list',
@@ -11,9 +12,16 @@ import { switchMap } from 'rxjs';
   styleUrl: './update-list.scss',
 })
 export class UpdateList {
-  public id = input.required<string>()
-  public mangaService = inject(MangaService)
-  public mangaListById = toSignal(
+  public id = input.required<string>();
+  public mangaService = inject(MangaService);
+  private readonly mangaStore = inject(MangaListStore);
+
+  /*public mangaListById = toSignal(
     toObservable(this.id).pipe(switchMap((id) => this.mangaService.getMangaListById(id)))
-    )
+    )*/
+  
+  public mangaListById = rxResource({
+    params: () => this.id(),
+    stream: ({ params }) => this.mangaService.getMangaListById(params),
+  });
 }

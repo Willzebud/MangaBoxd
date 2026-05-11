@@ -34,7 +34,7 @@ export class Register {
     
   });
 
-  private readonly errorMessage = signal<string | null>(null);
+  //private readonly errorMessage = signal<string | null>(null);
 
   public registerForm = form(this.registerModel, (path) => {
     required(path.email, { message: 'Email is required' });
@@ -53,6 +53,8 @@ export class Register {
   public onSubmitRegister(): void {
 
     this.authStore.register(this.registerModel())
+
+    console.log("Auth Test", this.authStore.register(this.registerModel()))
     
     /*this.isSubmitting.set(true);
     this.errorMessage.set(null);

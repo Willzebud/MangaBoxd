@@ -56,7 +56,7 @@
     </div>
     <button
       type="button"
-      [disabled]="authForm()().invalid() || authStore.loading()"
+      [disabled]="authForm()().invalid()"
       (click)="onClick()"
       class="btn-validator"
     >

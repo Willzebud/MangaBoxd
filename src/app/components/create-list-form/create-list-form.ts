@@ -2,11 +2,9 @@ import { Component, effect, inject, input, signal } from '@angular/core';
 import { SearchMangaForm } from '../search-manga-form/search-manga-form';
 import { Router } from '@angular/router';
 import { MangaService } from '../../core/services/manga-service';
-import {
-  MangaList,
-  MangaListCreateFormModel,
-} from '../../core/models/manga-models';
+import { MangaList, MangaListCreateFormModel } from '../../core/models/manga-models';
 import { form, required, FormField } from '@angular/forms/signals';
+import { MangaListStore } from '../../core/stores/manga/manga.store';
 
 @Component({
   selector: 'app-create-list-form',
@@ -22,6 +20,7 @@ export class CreateListForm {
   private readonly mangaService = inject(MangaService);
   public btnText = input.required<string>();
   public mangaList = input<MangaList>();
+  private readonly mangaStore = inject(MangaListStore);
 
   constructor() {
     effect(() => {
@@ -59,12 +58,12 @@ export class CreateListForm {
     this.isSubmitting.set(true);
 
     if (this.mangaList()) {
-      const { mangas, ...form} = this.createListForm().value()
-      const updatedMangas = mangas.map(m => {
+      const { mangas, ...form } = this.createListForm().value();
+      const updatedMangas = mangas.map((m) => {
         const { addedAt, ...updatedManga } = m;
-        return updatedManga
-      })
-      this.mangaService.updateMangaList(this.mangaList()!.id, { mangas: updatedMangas, ...form}).subscribe({
+        return updatedManga;
+      });
+      /*this.mangaService.updateMangaList(this.mangaList()!.id, { mangas: updatedMangas, ...form}).subscribe({
         next: (response) => {
           alert('mangalist updated successfully');
           this.isSubmitting.set(false);
@@ -75,9 +74,13 @@ export class CreateListForm {
           this.errorMessage.set('Update manga list failed');
           this.isSubmitting.set(false);
         },
-      })
+      })*/
+      this.mangaStore.updateMangaList({
+        id: this.mangaList()!.id,
+        model: { mangas: updatedMangas, ...form },
+      });
     } else {
-      this.mangaService.postMangaList(this.createListForm().value()).subscribe({
+      /*this.mangaService.postMangaList(this.createListForm().value()).subscribe({
         next: (response) => {
           alert('mangalist added successfully');
           this.isSubmitting.set(false);
@@ -87,13 +90,15 @@ export class CreateListForm {
           this.errorMessage.set('Adding manga list failed');
           this.isSubmitting.set(false);
         },
-      });
+      });*/
+
+      this.mangaStore.postMangaList(this.createListForm().value());
     }
   }
 
   public handleClickSubmitMangaList(): void {
     if (!this.mangaListModel().title.trim() || this.mangaListModel().mangas.length === 0) {
-      alert('A list must include at least one title and one film');
+      alert('A list must include at least one title and one manga');
       return;
     }
     this.onSubmitMangaList();

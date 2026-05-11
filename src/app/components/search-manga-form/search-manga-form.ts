@@ -7,7 +7,7 @@ import {
   OutputEmitterRef,
   signal,
 } from '@angular/core';
-import { debounceTime, switchMap } from 'rxjs';
+import { debounceTime, pipe, switchMap, timer } from 'rxjs';
 import { rxResource, toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { MangaService } from '../../core/services/manga-service';
 import { of } from 'rxjs';
@@ -43,7 +43,9 @@ export class SearchMangaForm {
 
   public readonly mangaData = rxResource({
     params: () => this.searchInput().trim(),
-    stream: ({ params }) => (params ? this.mangaService.getMangas(params) : of([])),
+    stream: ({params}) => timer(800).pipe(
+      switchMap(() => params ? this.mangaService.getMangas(params) : of(([])))
+    )
   });
 
   public onSearchUpdated(text: string): void {

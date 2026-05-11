@@ -14,7 +14,7 @@ import { MangaListStore } from '../../core/stores/manga/manga.store';
 export class MangaListSection {
   //public mangaService = inject(MangaService)
   private readonly mangaListStore = inject(MangaListStore)
-  public mangaLists = computed(() => this.mangaListStore.mangaList())
+  public mangaLists = computed(() => this.mangaListStore.mangaListArray())
 
   constructor() {
     this.mangaListStore.getMangaList();

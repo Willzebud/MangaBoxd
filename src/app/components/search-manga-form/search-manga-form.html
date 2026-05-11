@@ -12,7 +12,7 @@
           [value]="searchInput()"
           placeholder="Enter name of manga..."
         />
-        @if (mangaData.value()!.length) {
+        @if (mangaData.value()?.length) {
           <div class="search-manga-result" [class.disabled]="isClicked()">
             <ul>
               @for (manga of mangaData.value(); track manga.jikanId) {

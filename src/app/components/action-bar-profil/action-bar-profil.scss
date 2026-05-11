@@ -4,6 +4,7 @@ $color-secondary: #00e054;
 $color-tertiary: #40bcf4;
 $color-quarternary: #455466;
 $color-quinary: #2c3440;
+$color-white: #fff;
 
 .div-action-bar-profil-group {
     width: 80%;
@@ -20,11 +21,18 @@ $color-quinary: #2c3440;
     justify-content: center;
     align-items: center;
     margin-left: 10px;
-    gap: 10px;
+    gap: 20px;
 }
 
 .user-name {
     font-size: larger;
     font-weight: bolder;
     color: $color-tertiary;
+}
+
+.favoris {
+    color: $color-white;
+    font-weight: bolder;
+    font-size: larger;
+    cursor: pointer;
 }

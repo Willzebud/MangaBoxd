@@ -33,6 +33,14 @@ export class MangaService {
     return this.http.get<Manga[]>(`${this.jsonServerUrl}/jikan/mangas?title=${search}`);
   }
 
+  getMangaListById(listId: string) {
+    return this.http.get<MangaList>(`${this.jsonServerUrl}/manga-lists/${listId}`);
+  }
+
+  postMangaList(mangalist: MangaListCreateFormModel) {
+    return this.http.post<MangaList>(`${this.jsonServerUrl}/manga-lists`, mangalist);
+  }
+
   /*getMangaList(): Observable<MangaList[]> {
     return this.http.get<MangaList[]>(`${this.jsonServerUrl}/manga-lists`);
   }
@@ -49,8 +57,6 @@ export class MangaService {
     return this.http.get<Manga[]>(`${this.jsonServerUrl}/jikan/mangas?title=${search}`);
   }
 
-  */
-
   getMangaListById(listId: string): Observable<MangaList> {
     return this.http.get<MangaList>(`${this.jsonServerUrl}/manga-lists/${listId}`);
   }
@@ -58,6 +64,8 @@ export class MangaService {
   postMangaList(mangalist: MangaListCreateFormModel): Observable<MangaListCreateFormModel> {
     return this.http.post<MangaListCreateFormModel>(`${this.jsonServerUrl}/manga-lists`, mangalist);
   }
+
+  */
 
   updateMangaList(listId: string, data: MangaListCreateFormModel): Observable<MangaList> {
     return this.http.patch<MangaList>(`${this.jsonServerUrl}/manga-lists/${listId}`, data);

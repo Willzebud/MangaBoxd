@@ -14,7 +14,4 @@ export class ActionBarProfil {
   private readonly authStore = inject(AuthStore)
   public readonly userName = computed(() => this.authStore.user()?.firstname)
 
-  constructor(){
-    console.log("TESSSST", this.authStore.user()?.firstname)
-  }
 }

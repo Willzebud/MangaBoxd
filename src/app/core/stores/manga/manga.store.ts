@@ -7,28 +7,27 @@ import {
   withProps,
   withState,
 } from '@ngrx/signals';
-import { Manga, MangaList } from '../../models/manga-models';
+import { Manga, MangaList, MangaListCreateFormModel } from '../../models/manga-models';
 import { switchOp, withDevtools, withStorageSync } from '@angular-architects/ngrx-toolkit';
 import { inject } from '@angular/core';
 import { MangaService } from '../../services/manga-service';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap } from 'rxjs';
+import { catchError, distinctUntilChanged, EMPTY, pipe, switchMap, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 const STORAGE_SYNC_KEY = 'user';
 
 type MangaListState = {
   myMangaList: MangaList[];
-  mangaList: MangaList[];
+  mangaListArray: MangaList[];
   loading: boolean;
-  loadList: boolean;
 };
 
 const mangaListInitialState: MangaListState = {
   myMangaList: [],
-  mangaList: [],
+  mangaListArray: [],
   loading: false,
-  loadList: false,
 };
 
 export const MangaListStore = signalStore(
@@ -36,8 +35,7 @@ export const MangaListStore = signalStore(
   withState(mangaListInitialState),
   withDevtools(STORAGE_SYNC_KEY),
 
-  withMethods((store, mangaService = inject(MangaService)) => ({
-
+  withMethods((store, router = inject(Router), mangaService = inject(MangaService)) => ({
     getMangaList: rxMethod<void>(
       pipe(
         tap(() => patchState(store, { loading: true })),
@@ -45,7 +43,7 @@ export const MangaListStore = signalStore(
           return mangaService.getMangaList().pipe(
             tap((data) => {
               patchState(store, {
-                mangaList: data,
+                mangaListArray: data,
                 loading: false,
               });
             }),
@@ -70,15 +68,59 @@ export const MangaListStore = signalStore(
       ),
     ),
 
+    postMangaList: rxMethod<MangaListCreateFormModel>(
+      pipe(
+        distinctUntilChanged(),
+        tap(() => patchState(store, { loading: true })),
+        switchMap((mangaList) =>
+          mangaService.postMangaList(mangaList).pipe(
+            tap((data) => {
+              (patchState(store, {  
+                mangaListArray: [...store.mangaListArray(), data],
+                myMangaList: [...store.myMangaList(), data],
+                loading: false
+            }), 
+            router.navigate(['/homelist']));
+            }),
+          ),
+        ),
+      ),
+    ),
+
+
+    updateMangaList: rxMethod<{id: string, model:  MangaListCreateFormModel}>(
+      pipe(
+        distinctUntilChanged(),
+        tap(() => patchState(store, { loading: true })),
+        switchMap((mangaList) =>
+          mangaService.updateMangaList(mangaList.id, mangaList.model).pipe(
+            tap((data) => {
+              (patchState(store, { 
+                mangaListArray: [...store.mangaListArray(), data],
+                myMangaList: [...store.myMangaList(), data],
+                loading: false 
+            }),
+                router.navigate(['/homelist']));
+            }),
+          ),
+        ),
+      ),
+    ),
+
     deleteMangaList: rxMethod<string>(
       pipe(
         tap(() => patchState(store, { loading: true })),
         switchMap((listId) => {
           return mangaService.deleteMangaList(listId).pipe(
-            tap((data) => {
+            catchError((error) => {
+                console.log('Invalid Id')
+                return EMPTY
+            }),
+            tap(() => {
               patchState(store, {
+                mangaListArray: store.mangaListArray().filter(m => m.id !== listId),
+                myMangaList: store.myMangaList().filter(m => m.id !== listId),
                 loading: false,
-                loadList: true,
               });
             }),
           );
@@ -87,11 +129,11 @@ export const MangaListStore = signalStore(
     ),
 
     cleanStore() {
-      patchState(store, { myMangaList: [], mangaList: [] });
+      patchState(store, { myMangaList: [], mangaListArray: [] });
     },
   })),
 
-  withHooks({
+  /*withHooks({
     onInit(store) {
       toObservable(store.loadList).subscribe((flag) => {
         if (flag) {
@@ -99,5 +141,5 @@ export const MangaListStore = signalStore(
         }
       });
     },
-  }),
+  }),*/
 );
