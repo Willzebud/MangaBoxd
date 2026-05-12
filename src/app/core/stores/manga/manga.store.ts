@@ -141,7 +141,6 @@ export const MangaListStore = signalStore(
 
     updateMangaList: rxMethod<{ id: string; model: MangaListCreateFormModel }>(
       pipe(
-        distinctUntilChanged(),
         tap(() => patchState(store, { loading: true })),
         switchMap((mangaList) =>
           mangaService.updateMangaList(mangaList.id, mangaList.model).pipe(

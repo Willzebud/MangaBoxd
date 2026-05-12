@@ -58,11 +58,11 @@ export class CreateListForm {
     //this.isSubmitting.set(true);
 
     if (this.mangaList()) {
-      const { mangas, ...form } = this.createListForm().value();
+      /*const { mangas, ...form } = this.createListForm().value();
       const updatedMangas = mangas.map((m) => {
         const { addedAt, ...updatedManga } = m;
         return updatedManga;
-      });
+      });*/
       /*this.mangaService.updateMangaList(this.mangaList()!.id, { mangas: updatedMangas, ...form}).subscribe({
         next: (response) => {
           alert('mangalist updated successfully');
@@ -77,7 +77,8 @@ export class CreateListForm {
       })*/
       this.mangaStore.updateMangaList({
         id: this.mangaList()!.id,
-        model: { mangas: updatedMangas, ...form },
+        //model: { mangas: updatedMangas, ...form },
+        model: this.createListForm().value(),
       });
     } else {
       /*this.mangaService.postMangaList(this.createListForm().value()).subscribe({
