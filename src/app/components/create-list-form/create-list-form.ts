@@ -42,7 +42,7 @@ export class CreateListForm {
     mangas: [],
   });
 
-  private readonly errorMessage = signal<string | null>(null);
+  //private readonly errorMessage = signal<string | null>(null);
 
   public createListForm = form(this.mangaListModel, (path) => {
     required(path.title, { message: 'List title is required' });
@@ -54,8 +54,8 @@ export class CreateListForm {
   }
 
   public onSubmitMangaList(): void {
-    this.errorMessage.set(null);
-    this.isSubmitting.set(true);
+    //this.errorMessage.set(null);
+    //this.isSubmitting.set(true);
 
     if (this.mangaList()) {
       const { mangas, ...form } = this.createListForm().value();

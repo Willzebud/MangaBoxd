@@ -1,6 +1,7 @@
 <div class="div-action-bar-profil-group">
   <div class="div-profil-group">
     <span class="user-name">{{userName()}}</span>
-    <span class="favoris" >Favoris</span>
+    <span class="profil" [class.active]="profilOrFav() === 'profil' " (click)="changeProfil()">Profil</span>
+    <span class="favoris" [class.active]="profilOrFav() === 'favorites' " (click)="changeFavorite()">Favorites</span>
   </div>
 </div>

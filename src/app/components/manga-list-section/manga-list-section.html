@@ -1,20 +1,24 @@
 <div class="manga-group">
-  @for (manga of mangaLists(); track manga.id) {
-    @if (manga.isPublic) {
-      <div class="manga-element">
-        <app-manga-cover-list [dataArray]="manga.mangas" />
-        <div class="text-section">
-          <h2 class="title-section">{{ manga.title }}</h2>
-          <p>
-            {{ manga.description }}
-          </p>
-          <div class="info-section">
-            <span>{{ manga.owner.firstname }}</span>
-            <span>{{ manga.createdAt | date : 'mediumDate'}}</span>
-            <span>{{manga.mangas.length}} manga</span>
+  @for (list of mangaListArray(); track list.id) {
+    <div class="manga-element">
+      <app-manga-cover-list [dataArray]="list.mangas" />
+      <div class="text-section">
+        <h2 class="title-section">{{ list.title }}</h2>
+        <div class="fav-group">
+          <div class="icon-container" (click)="addToFavList(list.id)">
+            <app-svg-icons class="icon-star" [path]="getIcon(list.id)" />
           </div>
+          <span class="fav-text">Favorites</span>
+        </div>
+        <p>
+          {{ list.description }}
+        </p>
+        <div class="info-section">
+          <span>{{ list.owner.firstname }}</span>
+          <span>{{ list.createdAt | date: 'mediumDate' }}</span>
+          <span>{{ list.mangas.length }} manga</span>
         </div>
       </div>
-    }
+    </div>
   }
 </div>

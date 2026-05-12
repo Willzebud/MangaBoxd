@@ -25,6 +25,10 @@ export class MangaService {
     return this.http.get<MangaList[]>(`${this.jsonServerUrl}/manga-lists/my-lists`);
   }
 
+  getMyFavoritesMangaList() {
+    return this.http.get<MangaList[]>(`${this.jsonServerUrl}/manga-lists/my-favorites`);
+  }
+
   deleteMangaList(listId: string) {
     return this.http.delete<void>(`${this.jsonServerUrl}/manga-lists/${listId}`);
   }
@@ -39,6 +43,18 @@ export class MangaService {
 
   postMangaList(mangalist: MangaListCreateFormModel) {
     return this.http.post<MangaList>(`${this.jsonServerUrl}/manga-lists`, mangalist);
+  }
+
+  postMangaListFav(listId: string) {
+    return this.http.post<MangaList[]>(`${this.jsonServerUrl}/manga-lists/${listId}/favorite`, {});
+  }
+
+  deleteMangaListFav(listId: string) {
+    return this.http.delete<void>(`${this.jsonServerUrl}/manga-lists/${listId}/favorite`);
+  }
+
+  updateMangaList(listId: string, data: MangaListCreateFormModel) {
+    return this.http.patch<MangaList>(`${this.jsonServerUrl}/manga-lists/${listId}`, data);
   }
 
   /*getMangaList(): Observable<MangaList[]> {
@@ -66,8 +82,4 @@ export class MangaService {
   }
 
   */
-
-  updateMangaList(listId: string, data: MangaListCreateFormModel): Observable<MangaList> {
-    return this.http.patch<MangaList>(`${this.jsonServerUrl}/manga-lists/${listId}`, data);
-  }
 }

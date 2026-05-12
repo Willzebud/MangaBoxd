@@ -30,4 +30,5 @@ export interface UserLoginResponse {
   firstname: string;
   lastname: string;
   role: string;
+  favoriteList: [];
 }

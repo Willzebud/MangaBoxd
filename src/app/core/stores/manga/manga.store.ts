@@ -19,14 +19,16 @@ import { Router } from '@angular/router';
 const STORAGE_SYNC_KEY = 'user';
 
 type MangaListState = {
+  myFavMangaList: MangaList[];
   myMangaList: MangaList[];
-  mangaListArray: MangaList[];
+  mangaList: MangaList[];
   loading: boolean;
 };
 
 const mangaListInitialState: MangaListState = {
+  myFavMangaList: [],
   myMangaList: [],
-  mangaListArray: [],
+  mangaList: [],
   loading: false,
 };
 
@@ -43,7 +45,7 @@ export const MangaListStore = signalStore(
           return mangaService.getMangaList().pipe(
             tap((data) => {
               patchState(store, {
-                mangaListArray: data,
+                mangaList: data,
                 loading: false,
               });
             }),
@@ -68,6 +70,22 @@ export const MangaListStore = signalStore(
       ),
     ),
 
+    getMyFavoritesMangaList: rxMethod<void>(
+      pipe(
+        tap(() => patchState(store, { loading: true })),
+        switchMap(() =>
+          mangaService.getMyFavoritesMangaList().pipe(
+            tap((data) => {
+              patchState(store, {
+                myFavMangaList: data,
+                loading: false,
+              });
+            }),
+          ),
+        ),
+      ),
+    ),
+
     postMangaList: rxMethod<MangaListCreateFormModel>(
       pipe(
         distinctUntilChanged(),
@@ -75,31 +93,64 @@ export const MangaListStore = signalStore(
         switchMap((mangaList) =>
           mangaService.postMangaList(mangaList).pipe(
             tap((data) => {
-              (patchState(store, {  
-                mangaListArray: [...store.mangaListArray(), data],
+              (patchState(store, {
+                mangaList: [...store.mangaList(), data],
                 myMangaList: [...store.myMangaList(), data],
-                loading: false
-            }), 
-            router.navigate(['/homelist']));
+                loading: false,
+              }),
+                router.navigate(['/homelist']));
             }),
           ),
         ),
       ),
     ),
 
+    postMangaListFav: rxMethod<string>(
+      pipe(
+        tap(() => patchState(store, { loading: true })),
+        switchMap((listId) => {
+          console.log(listId)
+          return mangaService.postMangaListFav(listId).pipe(
+            tap((data) => {
+              patchState(store, {
+                myFavMangaList: data,
+                loading: false,
+              });
+            }),
+          )
+        }
+        ),
+      ),
+    ),
 
-    updateMangaList: rxMethod<{id: string, model:  MangaListCreateFormModel}>(
+    deleteMyFavMangaList: rxMethod<string>(
+      pipe(
+        tap(() => patchState(store, { loading: true })),
+        switchMap((listId) =>
+          mangaService.deleteMangaListFav(listId).pipe(
+            tap(() => {
+              patchState(store, {
+                myFavMangaList: store.myFavMangaList().filter((m) => m.id !== listId),
+                loading: false,
+              });
+            }),
+          ),
+        ),
+      ),
+    ),
+
+    updateMangaList: rxMethod<{ id: string; model: MangaListCreateFormModel }>(
       pipe(
         distinctUntilChanged(),
         tap(() => patchState(store, { loading: true })),
         switchMap((mangaList) =>
           mangaService.updateMangaList(mangaList.id, mangaList.model).pipe(
             tap((data) => {
-              (patchState(store, { 
-                mangaListArray: [...store.mangaListArray(), data],
+              (patchState(store, {
+                mangaList: [...store.mangaList(), data],
                 myMangaList: [...store.myMangaList(), data],
-                loading: false 
-            }),
+                loading: false,
+              }),
                 router.navigate(['/homelist']));
             }),
           ),
@@ -113,13 +164,13 @@ export const MangaListStore = signalStore(
         switchMap((listId) => {
           return mangaService.deleteMangaList(listId).pipe(
             catchError((error) => {
-                console.log('Invalid Id')
-                return EMPTY
+              console.log('Invalid Id');
+              return EMPTY;
             }),
             tap(() => {
               patchState(store, {
-                mangaListArray: store.mangaListArray().filter(m => m.id !== listId),
-                myMangaList: store.myMangaList().filter(m => m.id !== listId),
+                mangaList: store.mangaList().filter((m) => m.id !== listId),
+                myMangaList: store.myMangaList().filter((m) => m.id !== listId),
                 loading: false,
               });
             }),
@@ -129,7 +180,7 @@ export const MangaListStore = signalStore(
     ),
 
     cleanStore() {
-      patchState(store, { myMangaList: [], mangaListArray: [] });
+      patchState(store, { myMangaList: [], mangaList: [] });
     },
   })),
 

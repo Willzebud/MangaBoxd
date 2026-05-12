@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthUserService } from '../core/services/auth-user-service';
 import { MangaCoverList } from "../components/manga-cover-list/manga-cover-list";
 import { MangaListSection } from "../components/manga-list-section/manga-list-section";
 import { AuthStore } from '../core/stores/auth/auth.store';
+import { MangaListStore } from '../core/stores/manga/manga.store';
 
 @Component({
   selector: 'app-home-list',
@@ -13,7 +14,9 @@ import { AuthStore } from '../core/stores/auth/auth.store';
 })
 export class HomeList {
   private readonly router = inject(Router);
-  private readonly authStore = inject(AuthStore)
+  private readonly authStore = inject(AuthStore);
+  private readonly mangaListStore = inject(MangaListStore);
+  public mangaLists = computed(() => this.mangaListStore.mangaList().filter(m => m.isPublic));
   //private readonly authService = inject(AuthUserService);
 
 

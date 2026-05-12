@@ -20,20 +20,10 @@
               <h2 class="h2-list-title">{{ list.title }}</h2>
             </div>
             <div class="action-element-group">
-            @if (list.isPublic) {
-              <div class="div-public-group">
-                <app-svg-icons class="icon" [path]="'/assets/icons/locker-open-svgrepo-com.svg'" />
-                <span>Public</span>
+              <div [class]="list.isPublic ? 'div-public-group' : 'div-private-group' ">
+                <app-svg-icons class="icon" [path]="getLockIcon(list.isPublic) " />
+                <span>{{list.isPublic ? 'Public' : 'Private'}}</span>
               </div>
-            } @else {
-              <div class="div-private-group">
-                <app-svg-icons
-                  class="icon"
-                  [path]="'/assets/icons/locker-closed-svgrepo-com.svg'"
-                />
-                <span>Private</span>
-              </div>
-            }
             <div class="btn-group">
                 <button (click)="onClickUpdateList(list.id)" class="btn-update">Update</button>
                 <button (click)="onClickListDelete(list.id)" class="btn-delete">Delete</button>

@@ -75,6 +75,10 @@ export class ProfilMangaListSection {
     this.isMangaListSorted.set(false);
   }
 
+  protected getLockIcon(isPublic: boolean): string {
+    return `/assets/icons/locker${isPublic ? '-open' : '-closed' }-svgrepo-com.svg`
+  }
+
   public onClickCreateList(): void {
     this.router.navigate(['/createlist']);
   }

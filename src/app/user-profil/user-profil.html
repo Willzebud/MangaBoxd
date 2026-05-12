@@ -1,4 +1,11 @@
 <div class="div-user-profil">
-<app-action-bar-profil ></app-action-bar-profil>
-<app-profil-manga-list-section></app-profil-manga-list-section>
+  <app-action-bar-profil
+    [profilOrFav]="profilView()"
+    (changeView)="profilView.set($event)"
+  ></app-action-bar-profil>
+  @if (profilView() === 'profil') {
+    <app-profil-manga-list-section/>
+  } @else {
+    <app-manga-list-section [mangaListArray]="myFavMangaList()"/>
+  }
 </div>

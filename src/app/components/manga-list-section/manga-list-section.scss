@@ -2,6 +2,7 @@ $color-primary: #ff8001;
 $color-secondary: #00e054;
 $color-tertiary: #40bcf4;
 $color-quarternary: #455466;
+$color-white: #fff;
 
 body {
   width: 100%;
@@ -41,6 +42,35 @@ span {
 .like-group {
   display: flex;
   gap: 6px;
+}
+
+.fav-group{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.fav-text {
+  color: $color-white;
+}
+
+.icon-container {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  cursor: pointer;
+}
+
+.icon-star {
+  width: auto;
+  height: auto;
+  background-color: $color-tertiary;
+}
+
+.icon-star-full {
+  width: auto;
+  height: auto;
+  background-color: $color-tertiary;
 }
 
 .icon-eye {
