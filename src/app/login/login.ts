@@ -52,8 +52,5 @@ export class Login {
     });*/
 
     this.authStore.login(this.loginModel())
-
-    console.log('TEST SUBMIT', this.authService.loginUser(this.loginModel()))
-    console.log('TEST LOGIN MODEL', this.loginModel())
   }
 }

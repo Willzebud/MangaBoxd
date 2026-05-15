@@ -1,0 +1,39 @@
+<div class="comment-section-group">
+  @if (commentsList().length) {
+    <span class="comment-title"
+      >{{ commentsList().length }} {{ commentsList().length > 1 ? 'comments' : 'comment' }}</span
+    >
+    @for (comment of commentsList(); track comment.id) {
+      <div class="comment-user-group">
+        <div class="user-name-group">
+          <div class="comment-author">{{ comment.author.firstname }}</div>
+          <div class="comment-date">{{ dateFormat(comment.createdAt) }}d</div>
+        </div>
+        <p class="comment-content">
+          {{ comment.content }}
+        </p>
+        
+          <div class="div-icon-delete">
+            <app-svg-icons class="icon-delete" [path]="'/assets/icons/delete-2-svgrepo-com.svg'" />
+          </div>
+        
+      </div>
+    }
+  } @else {
+    <span class="comment-title">Comment?</span>
+    <div class="div-manga-list">
+      <div class="div-manga-list-text">
+        <span class="span-title">Comment section is Empty</span>
+      </div>
+    </div>
+  }
+
+  <div class="comment-form">
+    <textarea
+      [formField]="postCommentForm.content"
+      class="comment-field"
+      placeholder="Writte a comment"
+    ></textarea>
+    <button class="btn-comment" (click)="onClickSubmitComment()">Post</button>
+  </div>
+</div>

@@ -68,7 +68,6 @@ export class CreateListForm {
           alert('mangalist updated successfully');
           this.isSubmitting.set(false);
           this.router.navigate(['/homelist']);
-          console.log(response);
         },
         error: () => {
           this.errorMessage.set('Update manga list failed');

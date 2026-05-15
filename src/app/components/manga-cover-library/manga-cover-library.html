@@ -1,0 +1,9 @@
+<div class="manga-cover-labrary">
+    <div class="manga-cover-group">
+        <hr class="hr-library">
+        @for (cover of coversUrl(); track $index) {
+            <img class="manga-cover" [src]="cover" />
+        }
+        <hr class="hr-library">
+    </div>
+</div>

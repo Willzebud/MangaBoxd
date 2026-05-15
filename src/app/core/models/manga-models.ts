@@ -3,7 +3,7 @@ export interface MangaList {
   title: string;
   description: string;
   owner: {
-    id: number;
+    id: string;
     firstname: string;
     lastname: string;
   };

@@ -1,0 +1,114 @@
+$text-error-color: #ffdd02;
+$color-primary: #ff8001;
+$color-secondary: #00e054;
+$color-tertiary: #40bcf4;
+$color-quarternary: #455466;
+$color-quinary: #2c3440;
+$color-white: #fff;
+
+.comment-section-group {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px;
+}
+
+.comment-title {
+  color: $color-white;
+  font-size: large;
+  font-weight: bold;
+}
+
+.comment-author {
+  color: $color-white;
+  font-size: large;
+  font-weight: bold;
+}
+
+.span-title {
+  color: $color-white;
+}
+
+.div-manga-list {
+  border: 1px solid;
+  border-color: $color-quarternary;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.div-manga-list-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 80px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-user-group {
+  display: grid;
+  grid-template-columns: 220px 1fr 40px;
+  padding: 22px 0;
+  border-bottom: 1px solid $color-quarternary;
+}
+
+.comment-author {
+  color: $color-white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.comment-date {
+  color: #7f8fa3;
+  font-size: 18px;
+  margin-top: 4px;
+}
+
+.comment-content {
+  color: #7f8fa3;
+  font-size: medium;
+  margin: 0px 30px 0px 0px;
+}
+
+.div-icon-delete {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.icon-delete {
+  display: block;
+  background-color: $color-tertiary;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.comment-field {
+  width: 30%;
+  height: 110px;
+  outline: none;
+  border: none;
+  color: white;
+  background: $color-quinary;
+  border-radius: 3px;
+  align-self: self-end;
+}
+
+.btn-comment {
+  all: unset;
+  padding: 6px;
+  border-radius: 8px;
+  width: 40px;
+  background-color: $color-secondary;
+  color: $color-white;
+  font-weight: bold;
+  text-align: center;
+  align-self: flex-end;
+  margin-bottom: 80px;
+  cursor: pointer;
+}

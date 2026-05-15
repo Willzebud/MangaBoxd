@@ -1,0 +1,47 @@
+
+$text-error-color: #ffdd02;
+$color-primary: #ff8001;
+$color-secondary: #00e054;
+$color-tertiary: #40bcf4;
+$color-quarternary: #455466;
+$color-quinary: #2c3440;
+$color-white: #fff;
+
+.manga-cover-labrary {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.manga-cover-group {
+  display: grid;
+  grid-template-columns: repeat(5, max-content);
+  gap: 15px;
+}
+
+.manga-cover {
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.hr-line {
+  background: linear-gradient(90deg, $color-primary, $color-secondary, $color-tertiary);
+  height: 2px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.hr-library {
+  background: linear-gradient(90deg, $color-primary, $color-secondary, $color-tertiary);
+  height: 2px;
+  border: none;
+  border-radius: 10px;
+  margin: 30px 0px;
+  grid-column: 1 / -1;
+  width: 100%;
+}

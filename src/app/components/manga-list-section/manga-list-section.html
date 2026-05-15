@@ -5,7 +5,7 @@
       <div class="text-section">
         <h2 class="title-section">{{ list.title }}</h2>
         <div class="fav-group">
-          <div class="icon-container" (click)="addToFavList(list.id)">
+          <div class="icon-container" (click)="addToFavList(list.id); $event.stopPropagation()">
             <app-svg-icons class="icon-star" [path]="getIcon(list.id)" />
           </div>
           <span class="fav-text">Favorites</span>
@@ -17,8 +17,11 @@
           <span>{{ list.owner.firstname }}</span>
           <span>{{ list.createdAt | date: 'mediumDate' }}</span>
           <span>{{ list.mangas.length }} manga</span>
+          <span>{{ getCommentsNumber(list.id) }} {{ getCommentsNumber(list.id) > 1 ? 'comments' : 'comment' }}</span>
         </div>
+        <button class="btn-details" (click)="onClickDetailList(list.id)">See details</button>
       </div>
     </div>
   }
+  
 </div>

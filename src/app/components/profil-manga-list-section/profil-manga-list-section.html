@@ -10,42 +10,41 @@
     ></app-sort-and-filter-controls>
   </div>
   <hr class="hr" />
-  @if (mangaLists().length) {
-    <div class="manga-group">
-      @for (list of mangaListFilter(); track list.id) {
-        <div class="manga-element">
-          <app-manga-cover-list [dataArray]="list.mangas" />
-          <div class="text-section">
-            <div class="title-section">
-              <h2 class="h2-list-title">{{ list.title }}</h2>
+  <div class="manga-group">
+    @for (list of mangaListFilter(); track list.id) {
+      <div class="manga-element">
+        <app-manga-cover-list [dataArray]="list.mangas" />
+        <div class="text-section">
+          <div class="title-section">
+            <h2 class="h2-list-title">{{ list.title }}</h2>
+          </div>
+          <div class="action-element-group">
+            <div [class]="list.isPublic ? 'div-public-group' : 'div-private-group'">
+              <app-svg-icons class="icon" [path]="getLockIcon(list.isPublic)" />
+              <span>{{ list.isPublic ? 'Public' : 'Private' }}</span>
             </div>
-            <div class="action-element-group">
-              <div [class]="list.isPublic ? 'div-public-group' : 'div-private-group' ">
-                <app-svg-icons class="icon" [path]="getLockIcon(list.isPublic) " />
-                <span>{{list.isPublic ? 'Public' : 'Private'}}</span>
-              </div>
             <div class="btn-group">
-                <button (click)="onClickUpdateList(list.id)" class="btn-update">Update</button>
-                <button (click)="onClickListDelete(list.id)" class="btn-delete">Delete</button>
-              </div>
-            </div>
-            <p class="p-list-description">
-              {{ list.description }}
-            </p>
-            <div class="info-section">
-              <span>{{ list.createdAt | date: 'mediumDate' }}</span>
-              <span>{{ list.mangas.length }} manga</span>
+              <button (click)="onClickUpdateList(list.id)" class="btn-update">Update</button>
+              <button (click)="onClickListDelete(list.id)" class="btn-delete">Delete</button>
             </div>
           </div>
+          <p class="p-list-description">
+            {{ list.description }}
+          </p>
+          <div class="info-section">
+            <span>{{ list.createdAt | date: 'mediumDate' }}</span>
+            <span>{{ list.mangas.length }} manga</span>
+          </div>
         </div>
-      }
-    </div>
-  } @else {
-    <div class="div-manga-list">
-      <div class="div-manga-list-text">
-        <span class="span-title">Your list is Empty</span>
-        <button (click)="onClickCreateList()" class="btn-create-list">Create a list</button>
       </div>
-    </div>
-  }
+    } 
+    @empty {
+      <div class="div-manga-list">
+        <div class="div-manga-list-text">
+          <span class="span-title">Your list is Empty</span>
+          <button (click)="onClickCreateList()" class="btn-create-list">Create a list</button>
+        </div>
+      </div>
+    }
+  </div>
 </div>

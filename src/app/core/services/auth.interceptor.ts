@@ -73,7 +73,6 @@ export const responseTypeInterceptor: HttpInterceptorFn = (
       })
 
       return throwError(() => {
-        console.log(message)
       });
     }),
   );

@@ -57,7 +57,6 @@ export const AuthStore = signalStore(
         if (error instanceof HttpErrorResponse) {
           httpError(error)
         }
-        console.log(error);
       }
     },*/
 

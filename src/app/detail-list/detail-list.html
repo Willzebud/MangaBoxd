@@ -1,0 +1,12 @@
+<div class="list-details-group">
+  <div class="user-data-group">
+    <span class="user-name">{{ userName() }}</span>
+    <span class="list-updated-at"
+      >updated {{ dateFormat() }} {{ dateFormat() !== '1' ? 'days' : 'day' }} ago</span
+    >
+  </div>
+  <h2 class="list-title">{{ mangaListById.value()?.title }}</h2>
+  <p class="list-description">{{ mangaListById.value()?.description }}</p>
+  <app-manga-cover-library [coversUrl]="mangasCover()" />
+  <app-comment-section [mangaList]="mangaListById.value()" />
+</div>

@@ -24,6 +24,10 @@ export const mainRoute: Routes = [
         loadComponent: () => import('../update-list/update-list').then((m) => m.UpdateList)
       },
       {
+        path: 'detaillist/:id',
+        loadComponent: () => import('../detail-list/detail-list').then((m) => m.DetailList)
+      },
+      {
         path: '**',
         redirectTo: 'homelist'
       }

@@ -27,11 +27,22 @@ span {
   flex-direction: column;
 }
 
+.btn-details {
+  all: unset;
+  background-color: $color-primary;
+  color: $color-white;
+  font-weight: bold;
+  margin-top: 12px;
+  padding: 6px;
+  border-radius: 8px;
+}
+
 .manga-element {
   display: flex;
   gap: 20px;
   justify-content: flex-start;
   margin-bottom: 4%;
+  cursor: pointer;
 }
 
 .info-section {
@@ -44,7 +55,7 @@ span {
   gap: 6px;
 }
 
-.fav-group{
+.fav-group {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -74,22 +85,22 @@ span {
 }
 
 .icon-eye {
-    width: 20px;
-    height: 20px;
-    background-color: $color-primary;
-  }
+  width: 20px;
+  height: 20px;
+  background-color: $color-primary;
+}
 
-  .icon-heart {
-    width: 20px;
-    height: 20px;
-    background-color: $color-secondary;
-  }
+.icon-heart {
+  width: 20px;
+  height: 20px;
+  background-color: $color-secondary;
+}
 
-  .icon-comment {
-    width: 20px;
-    height: 20px;
-    background-color: $color-tertiary;
-  }
+.icon-comment {
+  width: 20px;
+  height: 20px;
+  background-color: $color-tertiary;
+}
 
 @media screen and (min-width: 320px) {
   .manga-element {
@@ -214,42 +225,42 @@ span {
 
 @media screen and (min-width: 1024px) {
   h2 {
-  color: white;
-}
+    color: white;
+  }
 
-p {
-  color: white;
-  text-align: justify;
-}
+  p {
+    color: white;
+    text-align: justify;
+  }
 
-span {
-  color: $color-quarternary;
-}
+  span {
+    color: $color-quarternary;
+  }
 
-.manga-group {
-  margin: 0 40px;
-  display: flex;
-  flex-direction: column;
-}
+  .manga-group {
+    margin: 0 40px;
+    display: flex;
+    flex-direction: column;
+  }
 
-.manga-element {
-  display: flex;
-  gap: 20px;
-  flex-direction: row;
-  justify-content: flex-start;
-}
+  .manga-element {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 
-.info-section {
-  display: flex;
-  gap: 15px;
-}
+  .info-section {
+    display: flex;
+    gap: 15px;
+  }
 
-.like-group {
-  display: flex;
-  gap: 6px;
-}
+  .like-group {
+    display: flex;
+    gap: 6px;
+  }
 
-.icon-eye {
+  .icon-eye {
     max-width: 20px;
     max-height: 20px;
   }

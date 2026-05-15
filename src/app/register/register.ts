@@ -53,8 +53,6 @@ export class Register {
   public onSubmitRegister(): void {
 
     this.authStore.register(this.registerModel())
-
-    console.log("Auth Test", this.authStore.register(this.registerModel()))
     
     /*this.isSubmitting.set(true);
     this.errorMessage.set(null);
