@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { MangaCoverList } from '../manga-cover-list/manga-cover-list';
 import { MangaService } from '../../core/services/manga-service';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { DatePipe } from '@angular/common';
 import { MangaListStore } from '../../core/stores/manga/manga.store';
 import { SvgIcons } from '../svg-icons/svg-icons';
@@ -27,7 +27,6 @@ type CommentsResponse = {
   createdAt: string;
 };
 
-
 @Component({
   selector: 'app-manga-list-section',
   imports: [MangaCoverList, DatePipe, SvgIcons],
@@ -37,31 +36,33 @@ type CommentsResponse = {
 })
 export class MangaListSection {
   private readonly mangaListStore = inject(MangaListStore);
+  private readonly commentsStore = inject(CommentsListStore);
   private readonly router = inject(Router);
   public myFavMangaList = computed(() => this.mangaListStore.myFavMangaList());
   public isDisabled = computed(() => this.mangaListStore.loading());
 
   public mangaListArray = input.required<MangaList[]>();
+  public commentsArray = signal<CommentsResponse[]>([]);
 
   constructor() {
     this.mangaListStore.getMangaList();
     this.mangaListStore.getMyFavoritesMangaList();
     effect(() => {
-      this.mangaListStore.getCommentsNumberByListId();
-    })
+      this.mangaListStore.getCommentsNumberByListId().subscribe((comments) => {
+        this.commentsArray.set(comments.flat());
+      });
+    });
   }
 
-  private commentsArray = toSignal(
+  /*private commentsArray = toSignal(
     this.mangaListStore.getCommentsNumberByListId().pipe(
       map((commentArray) => commentArray.flat())
     ),
     {initialValue: []}
-  );
+  );*/
 
   protected getCommentsNumber(listId: string): number {
-    return this.commentsArray().filter(
-      (data) => data.mangaListId === listId
-    ).length;
+    return this.commentsArray().filter((comment) => comment.mangaListId === listId).length;
   }
 
   protected getIcon(listId: string): string {

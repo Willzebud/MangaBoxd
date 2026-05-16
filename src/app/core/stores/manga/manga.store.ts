@@ -38,6 +38,7 @@ export const MangaListStore = signalStore(
   withState(mangaListInitialState),
   withDevtools(STORAGE_SYNC_KEY),
   withStorageSync(STORAGE_SYNC_KEY),
+
   withComputed((store) => ({
     listsId: computed(() => store.mangaList().map((list) => list.id)),
   })),

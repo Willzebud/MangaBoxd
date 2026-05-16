@@ -23,6 +23,7 @@ export function authInterceptor(
     return next(req);
   }
 
+
   const headers = new HttpHeaders({
     Authorization: `Bearer ${token}`,
   });

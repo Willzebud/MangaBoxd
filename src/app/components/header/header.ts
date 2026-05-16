@@ -5,6 +5,7 @@ import { SvgIcons } from '../svg-icons/svg-icons';
 import { NgClass } from '@angular/common';
 import { AuthStore } from '../../core/stores/auth/auth.store';
 import { MangaListStore } from '../../core/stores/manga/manga.store';
+import { CommentsListStore } from '../../core/stores/comments/comments.store';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,7 @@ export class Header {
   //private readonly router = inject(Router);
   private readonly authStore = inject(AuthStore)
   private readonly mangaStore = inject(MangaListStore)
+  private readonly commentsStore = inject(CommentsListStore)
   public isActive = false;
 
   public toggleMenu() {
@@ -26,6 +28,7 @@ export class Header {
     //this.authService.removeToken();
     this.authStore.logout()
     this.mangaStore.cleanStore()
+    this.commentsStore.cleanStore()
 
     //this.router.navigate(['/login']);
   }

@@ -5,6 +5,7 @@ import { CommentBody } from '../../core/models/comments-models';
 import { form, required, FormField } from '@angular/forms/signals';
 import { DatePipe } from '@angular/common';
 import { SvgIcons } from '../svg-icons/svg-icons';
+import { AuthStore } from '../../core/stores/auth/auth.store';
 
 @Component({
   selector: 'app-comment-section',
@@ -14,10 +15,13 @@ import { SvgIcons } from '../svg-icons/svg-icons';
 })
 export class CommentSection {
   private readonly commentsListStore = inject(CommentsListStore);
+  private readonly authStore = inject(AuthStore)
   public mangaList = input<MangaList>();
   public commentsList = computed(() => this.commentsListStore.commentsList());
+  public userId = computed(() => this.authStore.userId())
   private datenow = Date.now();
   private datePipe = inject(DatePipe);
+  public id = input.required<string>();
 
   constructor() {
     effect(() => {
@@ -30,15 +34,9 @@ export class CommentSection {
     
   }
 
-  /*protected canDeleteComment(commentAuthorId: string): boolean {
-  const mangaListOwnerId = this.mangaList()?.owner.id;
-
-  if (!mangaListOwnerId) {
-    return false;
-  }
-
-  return commentAuthorId === mangaListOwnerId;
-}*/
+  protected canDeleteComment(commentAuthorId: string): boolean {
+  return commentAuthorId === this.userId();
+}
 
   private readonly commentsModel = signal<CommentBody>({
     content: '',
@@ -61,5 +59,9 @@ export class CommentSection {
     const newDate = this.datenow - new Date(createdAt).getTime();
     const dateFormated = this.datePipe.transform(newDate, 'd');
     return `${dateFormated}`;
+  }
+
+  protected onClickDeleteComment(commentId: string){
+    this.commentsListStore.deleteComment({listID: this.id(), commentId: commentId})
   }
 }

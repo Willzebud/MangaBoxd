@@ -12,11 +12,11 @@
         <p class="comment-content">
           {{ comment.content }}
         </p>
-        
-          <div class="div-icon-delete">
+        @if (canDeleteComment(comment.author.id)) {
+          <div class="div-icon-delete" (click)="onClickDeleteComment(comment.id)">
             <app-svg-icons class="icon-delete" [path]="'/assets/icons/delete-2-svgrepo-com.svg'" />
           </div>
-        
+        }
       </div>
     }
   } @else {

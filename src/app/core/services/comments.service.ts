@@ -17,4 +17,8 @@ export class Comments {
   getComments(listId: string){
     return this.http.get<CommentResponse[]>(`${this.authApiUrl}/${listId}/comments`)
   }
+
+  deleteComment(listId: string, commentId: string){
+    return this.http.delete<void>(`${this.authApiUrl}/${listId}/comments/${commentId}`)
+  }
 }

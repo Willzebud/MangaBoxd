@@ -8,5 +8,5 @@
   <h2 class="list-title">{{ mangaListById.value()?.title }}</h2>
   <p class="list-description">{{ mangaListById.value()?.description }}</p>
   <app-manga-cover-library [coversUrl]="mangasCover()" />
-  <app-comment-section [mangaList]="mangaListById.value()" />
+  <app-comment-section [id]="id()" [mangaList]="mangaListById.value()" />
 </div>

@@ -22,6 +22,9 @@ export const CommentsListStore = signalStore(
   withDevtools(STORAGE_SYNC_KEY),
   withStorageSync(STORAGE_SYNC_KEY),
   withMethods((store, commentsService = inject(Comments)) => ({
+    cleanStore() {
+      patchState(store, { commentsList: [] });
+    },
     postComment: rxMethod<{ id: string; model: CommentBody }>(
       pipe(
         switchMap((comment) =>
@@ -42,7 +45,21 @@ export const CommentsListStore = signalStore(
           commentsService.getComments(listId).pipe(
             tap((data) => {
               patchState(store, {
-                commentsList: data, 
+                commentsList: data,
+              });
+            }),
+          ),
+        ),
+      ),
+    ),
+
+    deleteComment: rxMethod<{ listID: string; commentId: string }>(
+      pipe(
+        switchMap((id) =>
+          commentsService.deleteComment(id.listID, id.commentId).pipe(
+            tap(() => {
+              patchState(store, {
+                commentsList: store.commentsList().filter((comment) => comment.id !== id.commentId),
               });
             }),
           ),

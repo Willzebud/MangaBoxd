@@ -30,9 +30,9 @@ export const AuthStore = signalStore(
   withDevtools(STORAGE_SYNC_KEY),
   withStorageSync(STORAGE_SYNC_KEY),
 
-  /*withComputed((store) => ({
-    token: computed(() => store.accessToken()),
-  })),*/
+  withComputed((store) => ({
+    userId: computed(() => store.user()?.id),
+  })),
 
   withMethods((store, router = inject(Router), authService = inject(AuthUserService)) => ({
     /*async login(userLogin: UserLogin): Promise<void> {
